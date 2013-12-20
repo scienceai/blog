@@ -1,0 +1,51 @@
+{
+  "name": "unicorns-schools",
+  "version": "0.0.0",
+  "description": "Unicorns founders and schools origin",
+  "license": {
+    "type": "DbCL-1.0",
+    "url": "http://opendatacommons.org/licenses/dbcl/1.0/"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/standard-analytics/blog.git",
+      "path": "data/unicorn-schools"
+    }
+  ],
+  "keywords": ["schools", "grads", "startup", "unicorns"],
+  "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
+  "dataDependencies": {
+    "unicorns": "0.0.0"
+  },
+  "analytics": [
+    {
+      "name": "propTest",
+      "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
+      "scripts": { "start": "scripts/propTests.R" },
+      "inputs":  [ { "datapackage": "unicorns", "resource": "schools" } ],
+      "outputs": [ { "resource": "stanfordVsHarvard" } ]
+    }
+  ],
+  "resources": [
+    {
+      "name": "stanfordVsHarvard",
+      "@context": {
+        "@vocab": "https://raw.github/com/standard-analytics/Schemas/master/"
+      },
+      "@type": "propTest",
+      "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
+      "line": 4,
+      "data": {
+        "props": {
+          "p": 0.61905
+        },
+        "chisqTest": {
+          "X2": 0.7619,
+          "df": 1,
+          "pValue": 0.19137
+        }
+      }
+    }
+  ]
+}

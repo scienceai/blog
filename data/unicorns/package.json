@@ -1,0 +1,48 @@
+{
+  "name": "unicorns",
+  "version": "0.0.0",
+  "description": "Data used in Mode Analytics Stanford founders blog post",
+  "sources": [{
+    "name": "Mode Analytics blog",
+    "web": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders"
+  }],
+  "license": {
+    "type": "DbCL-1.0",
+    "url": "http://opendatacommons.org/licenses/dbcl/1.0/"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/standard-analytics/blog.git",
+      "path": "data/unicorns"
+    }
+  ],
+  "keywords": ["schools", "graduates", "startup", "unicorn"],
+  "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
+  "resources": [
+    {
+      "name": "schools",
+      "path": "data/schools.csv",
+      "format": "csv",
+      "schema": {
+        "fields": [
+    	  {
+    	    "name": "Schools",
+    	    "description": "American top schools",
+    	    "type": "number"
+    	  },
+    	  {
+    	    "name": "Founders",
+    	    "description": "Number of startup founders originating from each school",
+    	    "type": "number"
+    	  },
+    	  {
+    	    "name": "Unicorns",
+    	    "description": "Number of unicorn founders originating from each school",
+    	    "type": "number"
+    	  }
+        ]
+      }
+    }
+  ]
+}
