@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "description": "blog for Standard Analytics IO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/standard-analytics/blog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Sebastien Ballesteros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/standard-analytics/blog/issues"
+  },
+  "homepage": "https://github.com/standard-analytics/blog",
+  "dependencies": {
+    "ejs": "~0.8.5",
+    "poet": "~1.0.0-rc3",
+    "express": "~3.4.7"
+  }
+}
