@@ -138,7 +138,7 @@ package.json which for now contains nothing else.
 
 ```
 {
-  "name": "stanford-founders",
+  "name": "unicorns-schools",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
   "dataDependencies": {
