@@ -7,7 +7,7 @@
 }}}
 
 We are thrilled to announce the launch of Standard Analytics IO,
-("[STAN](http://i.imgur.com/8b8uYz6.jpg)") and we're glad you found
+("[STAN](http://www.wpclipart.com/animals/S/sloth/Sloth_drawing.png)") and we're glad you found
 us. Welcome! As data-scientists and former academic researchers, we
 understand first-hand that
 [horrible feeling](https://24.media.tumblr.com/ed476620ab8efbb04bcd5907f4a36065/tumblr_mxsvdkIVHj1szhmd5o1_500.gif)
