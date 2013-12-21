@@ -186,7 +186,7 @@ were used.
 
 While we are at it, we can also indicate as metadata how the results
 were obtained so that anyone (human or machine) can _fully reproduce_
-our analysis. So let's add our finding to our previous package.json
+our analysis. So let's add our findings to our previous package.json
 (that we originally used to get the dataDependencies).
 
 
@@ -250,7 +250,7 @@ Analytics [registry](https://github.com/standard-analytics/data-registry).
 <pre><code class="bash">$ dpm2 publish</code></pre>
 
 With such a file, anyone can _verify_ the results, plus there is more:
-anyone can now **quote** these finding! Let's illustrate this last
+anyone can now **quote** these findings! Let's illustrate this last
 point.
 
 As I said before, every resource of a data package published has its
