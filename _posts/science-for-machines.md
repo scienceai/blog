@@ -21,7 +21,7 @@ re-implementing previously published methods
 is rarely possible, as publishing data and analytics in a
 standardized, linked format is not common practice.
 
-![software development vs science](img/dev_v_science.png)
+![software development vs science](/img/dev_v_science.png)
 
 At Standard Analytics we package science in an accessible way and make
 it reusable so that scientists - just like software developers - can

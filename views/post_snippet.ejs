@@ -1,0 +1,15 @@
+<section class="post">
+  <header class="post-header">
+    <img class="post-avatar" alt="<%= post.author %> avatar" height="48" width="48" src="/img/common/<%= post.author.toLowerCase() %>.jpg">
+
+    <h2 class="post-title"><a href="<%= post.url %>"><%= post.title %></a></h2>
+
+    <p class="post-meta">
+      By <a class="post-author" href="mailto:<%= post.author.toLowerCase() %>@standardanalytics.io"><%= post.author %></a> under <a class="post-category post-category-pure" href="#"><%= post.category %></a>
+    </p>
+  </header>
+
+  <div class="post-description">
+    <%- post.content %>
+  </div>
+</section>

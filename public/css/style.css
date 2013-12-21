@@ -16,3 +16,11 @@ blockquote:before {
   top: -20px;
   color: #7a7a7a;
 }
+
+.post-header h2 a{
+  color: #222;
+}
+
+.post-header h2 a:hover{
+  text-decoration: none;
+}

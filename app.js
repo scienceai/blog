@@ -9,10 +9,7 @@ var app = express();
 var poet = new Poet(app, {
   posts: './_posts/',
   postsPerPage: 5,
-  metaFormat: 'json',
-  routes: {
-    '/:post': 'post'
-  }
+  metaFormat: 'json'
 });
 
 poet.watch(function () {
@@ -28,8 +25,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 app.get('/', function(req, res, next){

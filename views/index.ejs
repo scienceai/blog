@@ -1,97 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Standard Analytics IO weblog">
+<% include head %>
 
-    <title>Standard Analytics IO weblog</title>
+<div class="posts">
+  <h1 class="content-subhead">Recent Posts</h1>
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-    <link rel="stylesheet" href="css/layouts/blog.css">
-    <link rel="stylesheet" href="css/style.css">
+  <% getPosts().forEach(function(post,i){ %>
+  
+  <% include post_snippet %>
+  
+  <% }) %>
 
-    <link rel="stylesheet" href="lib/highlight/styles/xcode.css">
-    <script src="lib/highlight/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>    
+</div>
 
-  </head>
-
-  <body>
-
-
-    <div class="pure-g-r" id="layout">
-      <div class="sidebar pure-u">
-        <header class="header">
-          <hgroup>
-            <h1 class="brand-title">Standard Analytics</h1>
-            <h2 class="brand-tagline">The science you want in the format you need</h2>
-          </hgroup>
-
-          <nav class="nav">
-            <ul class="nav-list">
-              <li class="nav-item">
-                <a class="pure-button" href="http://standardanalytics.io">RESTful Science</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </div>
-
-      <div class="pure-u-1">
-        <div class="content">
-
-          <div class="posts">
-            <h1 class="content-subhead">Recent Posts</h1>
-
-
-            <% getPosts().forEach(function(post,i){ %>
-
-            <section class="post">
-              <header class="post-header">
-                <img class="post-avatar" alt="<%= post.author %> avatar" height="48" width="48" src="img/common/<%= post.author.toLowerCase() %>.jpg">
-
-                <h2 class="post-title"><%= post.title %></h2>
-
-                <p class="post-meta">
-                  By <a class="post-author" href="mailto:<%= post.author.toLowerCase() %>@standardanalytics.io"><%= post.author %></a> under <a class="post-category post-category-pure" href="#"><%= post.category %></a>
-                </p>
-              </header>
-
-              <div class="post-description">
-                <%- post.content %>
-              </div>
-            </section>
-
-            <% }) %>
-
-          </div>
-
-          <footer class="footer">
-            <div class="pure-menu pure-menu-horizontal pure-menu-open">
-              <ul>
-                <li><a href="http://standardanalytics.io/">About</a></li>
-                <li><a href="http://twitter.com/RESTfulScience/">Twitter</a></li>
-                <li><a href="http://github.com/standard-analytics/">Github</a></li>
-              </ul>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </div>
-
-
-    <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui.js"></script>
-    <script>
-      YUI().use('node-base', 'node-event-delegate', function (Y) {
-      // This just makes sure that the href="#" attached to the <a> elements
-        // don't scroll you back up the page.
-        Y.one('body').delegate('click', function (e) {
-        e.preventDefault();
-        }, 'a[href="#"]');
-        });
-    </script>
-
-
-  </body>
-</html>
+<% include foot %>
