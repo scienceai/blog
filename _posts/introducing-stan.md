@@ -24,7 +24,7 @@ in science right now.  Without a system to organize and keep track of
 the moving parts that make up any scientific project, it's incredibly
 challenging to even keep re-use your own work, nevermind someone
 else's work! We are passionate about making it easy for people to
-collaborate and share the amazing work that they are do. In short we
+collaborate and share the amazing work that they are doing. In short, we
 are working to give you
 *[the science you want, in the format you need](http://standardanalytics.io)*.
 
