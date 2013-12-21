@@ -159,9 +159,10 @@ only retrieves a package.json where all the resources data (our csv
 here) have been replaced by
 [URLs](http://en.wikipedia.org/wiki/Uniform_resource_locator). This is
 handy for big data when you might prefer to analyze data as a
-[stream](http://nodejs.org/api/stream.html), or simply when you just
-want a small subset of all the resources listed in a data package.
-But with the ```--cache``` option you get all the data!
+[stream](https://github.com/standard-analytics/data-streams), or
+simply when you just want a small subset of all the resources listed
+in a data package.  But with the ```--cache``` option you get all the
+data!
 
 Having the data I need, I can fire up [R](http://www.r-project.org/)
 and ask, _have Stanford grads founded significantly more unicorns than
