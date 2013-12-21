@@ -14,10 +14,6 @@ a:focus {
   text-decoration: underline;
 }
 
-code{
-    font-size: 70%;
-}
-
 /* LAYOUT CSS */
 #layout {
     padding-left: 25%; /* "left col (nav + list)" width */

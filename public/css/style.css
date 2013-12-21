@@ -24,3 +24,8 @@ blockquote:before {
 .post-header h2 a:hover{
   text-decoration: none;
 }
+
+pre code {
+  line-height:1em;
+  font-size: 90%;
+}
