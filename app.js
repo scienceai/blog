@@ -31,12 +31,11 @@ app.get('/', function(req, res, next){
   res.render('index');
 });
 
-//app.get('/rss', function (req, res) {
-//  // Only get the latest posts
-//  var posts = poet.helpers.getPosts(0, 5);
-//  res.setHeader('Content-Type', 'application/rss+xml');
-//  res.render('rss', { posts: posts });
-//});
+app.get('/rss', function (req, res) {
+  var posts = poet.helpers.getPosts(0, 5);
+  res.setHeader('Content-Type', 'application/rss+xml');
+  res.render('rss', { posts: posts });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
