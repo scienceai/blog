@@ -21,7 +21,62 @@ re-implementing previously published methods
 is rarely possible, as publishing data and analytics in a
 standardized, linked format is not common practice.
 
-![software development vs science](/img/dev_v_science.png)
+<figure style="border:1px solid grey; padding:10px;">
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <h2>Software Development</h2>
+
+      <h3>My program</h3>
+
+      <h4><a href="http://wiki.commonjs.org/wiki/Packages/1.1">package.json</a></h4>
+      <pre><code style="font-size:100%; line-height:1.4em;">{
+  "name": "my-program",
+  "version": "0.2.1",
+  "dependencies": {
+    "program-a": "0.1.0",
+    "program-b": "0.4.1",
+    "program-c": "1.2.0"
+   }
+}
+      </code></pre>
+    </div>
+
+    <div class="pure-u-1-2">
+      <h2>Science</h2>
+      
+      <h3>My cancer research article</h3>
+
+      <h4><a href="http://en.wikipedia.org/wiki/Scientific_citation">References</a></h4>
+      <ul style="list-style-image:url('/img/pdf-icon.png');">
+        <li>Author, Year. <strong>Data on smokers</strong>. Journal Name: Page.</li>
+        <li>Author, Year. <strong>Lung cancer incidence</strong>. Journal Name: Page.</li>
+        <li>Author, Year. <strong>Statistical methods</strong>. Journal Name: Page.</li>
+      </ul>
+      
+    </div>
+  </div>
+
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <pre><code class="bash" style="font-size:120%;">$ npm install</code></pre>        
+    </div>
+    <div class="pure-u-1-2">
+      <pre><code class="bash" style="color:red; font-size:120%;">null</code></pre>        
+    </div>
+  </div>
+  <figcaption style="font-size: 80%; line-height:1.4em;">
+    Software developers can easyly re-use previous work with package
+    managers like <a href="http://npmjs.org">npm</a> handling the
+    dependencies. Scientists have no such tools although their work
+    also depends on a lot of other work. Dependencies in science are
+    trapped in static format
+    (<a href="http://en.wikipedia.org/wiki/Scientific_journal">scientific
+      journals</a>
+    or <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF</a>).
+  </figcaption>
+</figure>
+
+
 
 At Standard Analytics we package science in an accessible way and make
 it reusable so that scientists - just like software developers - can
