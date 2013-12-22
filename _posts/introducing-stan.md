@@ -22,7 +22,7 @@ facing a full-blown
 '[reproducibility crisis](http://www.nature.com/news/replication-studies-bad-copy-1.10634)'
 in science right now.  Without a system to organize and keep track of
 the moving parts that make up any scientific project, it's incredibly
-challenging to even keep re-use your own work, nevermind someone
+challenging to even re-use your own work, nevermind someone
 else's work! We are passionate about making it easy for people to
 collaborate and share the amazing work that they are doing. In short, we
 are working to give you
