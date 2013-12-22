@@ -58,10 +58,10 @@ standardized, linked format is not common practice.
 
   <div class="pure-g">
     <div class="pure-u-1-2">
-      <pre><code class="bash" style="font-size:120%;">$ npm install</code></pre>        
+      <pre><code class="bash" style="font-size:120%;">$ npm install</code></pre>
     </div>
     <div class="pure-u-1-2">
-      <pre><code class="bash" style="color:red; font-size:120%;">null</code></pre>        
+      <pre><code class="bash" style="color:red; font-size:120%;">null</code></pre>
     </div>
   </div>
   <figcaption style="font-size: 80%; line-height:1.4em;">
