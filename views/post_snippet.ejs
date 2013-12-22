@@ -5,7 +5,11 @@
     <h2 class="post-title"><a href="<%= post.url %>"><%= post.title %></a></h2>
 
     <p class="post-meta">
-      By <a class="post-author" href="mailto:<%= post.author.toLowerCase() %>@standardanalytics.io"><%= post.author %></a> under <a class="post-category post-category-pure" href="#"><%= post.category %></a> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blog.standardanalytics.io<%= post.url %>" data-lang="en" data-via="RESTfulScience" data-text="<%= post.title %>">Tweet</a>
+      By <a class="post-author" href="mailto:<%= post.author.toLowerCase() %>@standardanalytics.io"><%= post.author %></a> under <a class="post-category post-category-pure" href="#"><%= post.category %></a> 
+      <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="<%= post.title %>" data-url="http://blog.standardanalytics.io<%= post.url %>" data-count="horizontal" data-style="twitter">Vote on Hacker News</a>
+
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blog.standardanalytics.io<%= post.url %>" data-lang="en" data-via="RESTfulScience" data-text="<%= post.title %>">Tweet</a>
+
     </p>
   </header>
 
