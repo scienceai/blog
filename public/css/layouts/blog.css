@@ -16,7 +16,7 @@ a:focus {
 
 /* LAYOUT CSS */
 #layout {
-    padding-left: 25%; /* "left col (nav + list)" width */
+    padding-left: 28%; /* "left col (nav + list)" width */
     position: relative;
 }
 
@@ -24,8 +24,8 @@ a:focus {
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 25%;
-    margin-left: -25%;
+    width: 28%;
+    margin-left: -28%;
     background: #2b252c;
     color: #fff;
 }
@@ -61,7 +61,7 @@ a:focus {
     background: transparent;
     border: 3px solid #5b5b5b;
     color: #999;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 .nav-item a:hover,
 .nav-item a:focus {
