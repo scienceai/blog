@@ -65,9 +65,9 @@ standardized, linked format is not common practice.
     </div>
   </div>
   <figcaption style="font-size: 80%; line-height:1.4em;">
-    Software developers can easyly re-use previous work with package
+    Software developers can easily re-use previous work with package
     managers like <a href="http://npmjs.org">npm</a> handling the
-    dependencies. Scientists have no such tools although their work
+    dependencies. Scientists have no such tools despite the fact that their work
     also depends on a lot of other work. Dependencies in science are
     trapped in static format
     (<a href="http://en.wikipedia.org/wiki/Scientific_journal">scientific
