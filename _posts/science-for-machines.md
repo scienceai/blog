@@ -325,7 +325,7 @@ transparent, and constructive *quantitative* elements.
 Last, let me stress that by simply walking down the URL, it is
 possible to go from an analytic (here a
 [p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the original data.
+the [original data](https://registry.standardanalytics.io/unicorns/0.0.0/schools).
 
 - As we have seen, the p-value is here: [https://registry.standardanalytics.io/unicorns-schools/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
 
