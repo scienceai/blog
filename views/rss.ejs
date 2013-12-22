@@ -7,10 +7,10 @@
     <% getPosts().forEach(function(post,i){ %>    
     <item>
       <title><%= post.title %></title>
-      <link>http://blog.standardanalytics.io/<%= post.url %></link>
+      <link>http://blog.standardanalytics.io<%= post.url %></link>
       <description><![CDATA[<%- post.preview %>]]></description>
       <pubDate><%= post.date.toUTCString() %></pubDate>
-      <guid>http://blog.standardanalytics.io/<%= post.url %></guid>
+      <guid>http://blog.standardanalytics.io<%= post.url %></guid>
     </item>    
     <% }) %>    
   </channel>
