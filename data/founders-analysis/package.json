@@ -23,7 +23,7 @@
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
       "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ { "datapackage": "unicorns", "resource": "schools" } ],
+      "inputs":  [ { "datapackage": "founders-data", "resource": "schools" } ],
       "outputs": [ { "resource": "stanfordVsHarvard" } ]
     }
   ],

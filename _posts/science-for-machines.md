@@ -127,7 +127,7 @@ will be packaged like that:
 
 ```
 {
-  "name": "unicorns",
+  "name": "founders-data",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
   "sources": [{
@@ -142,10 +142,10 @@ will be packaged like that:
     {
       "type": "git",
       "url": "https://github.com/standard-analytics/blog.git",
-      "path": "data/unicorns"
+      "path": "data/founders-data"
     }
   ],
-  "keywords": ["schools", "graduates", "startup", "unicorn"],
+  "keywords": ["schools", "graduates", "startup", "unicorns", "founders", "data"],
   "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
   "resources": [
     {
@@ -193,11 +193,11 @@ package.json which for now contains nothing else.
 
 ```
 {
-  "name": "unicorns-schools",
+  "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
   "dataDependencies": {
-    "unicorns": "0.0.0"
+    "founders-data": "0.0.0"
   }
 }
 ```
@@ -224,7 +224,7 @@ and ask, _have Stanford grads founded significantly more unicorns than
 Harvard ones?_
 
 
-<pre><code class="r">schools <- read.csv("data_modules/unicorns/data/schools.csv")
+<pre><code class="r">schools <- read.csv("../data_modules/founders-data/data/schools.csv")
 stanford <- schools$Unicorns[schools$Schools == "Stanford"]
 harvard <- schools$Unicorns[schools$Schools == "Harvard"]
 prop.test(stanford, stanford + harvard, alternative = "greater")</code></pre>
@@ -247,7 +247,7 @@ our analysis. So let's add our findings to our previous package.json
 
 ```
 {
-  "name": "unicorns-schools",
+  "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
   "license": {
@@ -258,20 +258,20 @@ our analysis. So let's add our findings to our previous package.json
     {
       "type": "git",
       "url": "https://github.com/standard-analytics/blog.git",
-      "path": "data/unicorns-schools"
+      "path": "data/founders-analysis"
     }
   ],
-  "keywords": ["stanford", "grads", "startup", "unicorns"],
+  "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
   "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
   "dataDependencies": {
-    "unicorns": "0.0.0"
+    "founders-data": "0.0.0"
   },
   "analytics": [
     {
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
       "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ { "datapackage": "unicorns", "resource": "schools" } ],
+      "inputs":  [ { "datapackage": "founders-data", "resource": "schools" } ],
       "outputs": [ { "resource": "stanfordVsHarvard" } ]
     }
   ],
@@ -310,13 +310,13 @@ point.
 
 As I said before, every resource of a data package published has its
 own URL. So I can use the following URL
-[https://registry.standardanalytics.io/unicorns-schools/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-schools/0.0.0/stanfordVsHarvard)
+[https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard)
 anytime I want to give my text or comments some statistical backbone.
 
 For instance, I can precisely quote that:
 
 > Although Stanford grads have founded more Unicorns than Harvard ones,
-> [there is no evidence to show that this difference is truly significant](https://registry.standardanalytics.io/unicorns-schools/0.0.0/stanfordVsHarvard).
+> [there is no evidence to show that this difference is truly significant](https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard).
 
 
 And the discussion could progress from there, based on concrete,
@@ -325,13 +325,13 @@ transparent, and constructive *quantitative* elements.
 Last, let me stress that by simply walking down the URL, it is
 possible to go from an analytic (here a
 [p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the [original data](https://registry.standardanalytics.io/unicorns/0.0.0/schools).
+the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools).
 
-- As we have seen, the p-value is here: [https://registry.standardanalytics.io/unicorns-schools/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
+- As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
 
-- The latest version of the full data package is here: [https://registry.standardanalytics.io/unicorns-schools/0.0.0](https://registry.standardanalytics.io/unicorns-stanford/0.0.0)
+- The latest version of the full data package is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0](https://registry.standardanalytics.io/unicorns-stanford/0.0.0)
 
-- Finally, you can see every published version of the work here: [https://registry.standardanalytics.io/unicorns-schools](https://registry.standardanalytics.io/unicorns-stanford)
+- Finally, you can see every published version of the work here: [https://registry.standardanalytics.io/founders-analysis](https://registry.standardanalytics.io/unicorns-stanford)
 
 
 To us, this is the beginning of a _new form of arguing, backed by
