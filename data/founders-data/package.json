@@ -1,5 +1,5 @@
 {
-  "name": "unicorns",
+  "name": "founders-data",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
   "sources": [{
@@ -14,10 +14,10 @@
     {
       "type": "git",
       "url": "https://github.com/standard-analytics/blog.git",
-      "path": "data/unicorns"
+      "path": "data/founders-data"
     }
   ],
-  "keywords": ["schools", "graduates", "startup", "unicorn"],
+  "keywords": ["schools", "graduates", "startup", "unicorn", "founders", "data"],
   "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
   "resources": [
     {

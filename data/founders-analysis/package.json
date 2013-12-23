@@ -1,5 +1,5 @@
 {
-  "name": "unicorns-schools",
+  "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
   "license": {
@@ -10,13 +10,13 @@
     {
       "type": "git",
       "url": "https://github.com/standard-analytics/blog.git",
-      "path": "data/unicorn-schools"
+      "path": "data/founders-analysis"
     }
   ],
-  "keywords": ["schools", "grads", "startup", "unicorns"],
+  "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
   "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
   "dataDependencies": {
-    "unicorns": "0.0.0"
+    "founders-data": "0.0.0"
   },
   "analytics": [
     {
