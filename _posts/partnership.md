@@ -24,7 +24,7 @@ The pressure to ensure the reproducibility of published science
 The Reproducibility Initiative is a collaborative effort, including
 [Science Exchange](https://www.scienceexchange.com),
 [PLOS](http://www.plos.org/), [FigShare](http://figshare.com/), and
-[Mendeley](http://www.mendeley.com/), to provide a forum for the independent validation of published studies.  The initiative recently received a $1.3 million grant
+[Mendeley](http://www.mendeley.com/) to provide a forum for the independent validation of published studies.  The initiative recently received a $1.3 million grant
 from the
 [Laura and John Arnold Foundation](http://www.arnoldfoundation.org/)
 to launch a project to validate [50 of the landmark studies in cancer biology](
@@ -43,7 +43,7 @@ analytics from both the original studies and the reproduced ones can be
 fully reproduced and made available in the best possible formats so
 that scientist can keep challenging and building upon this work.
 
-After our work is done, reproducing and challenging any study from
+After our work is done, obtaining the data and results of any study from
 the reproducibility initiative will be as easy as:
 
     dpm2 clone author_year
