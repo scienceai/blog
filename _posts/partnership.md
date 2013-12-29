@@ -24,10 +24,10 @@ The pressure to ensure the reproducibility of published science
 The Reproducibility Initiative is a collaborative effort, including
 [Science Exchange](https://www.scienceexchange.com),
 [PLOS](http://www.plos.org/), [FigShare](http://figshare.com/), and
-[Mendeley](http://www.mendeley.com/), and backed by a $1.3 million grant
+[Mendeley](http://www.mendeley.com/), to provide a forum for the independent validation of published studies.  The initiative recently received a $1.3 million grant
 from the
 [Laura and John Arnold Foundation](http://www.arnoldfoundation.org/)
-to validate [50 of the landmark studies in cancer biology](
+to launch a project to validate [50 of the landmark studies in cancer biology](
 https://osf.io/p7ayb/wiki/home/).
 
 Standard Analytics' mission in this partnership is perfectly
