@@ -265,7 +265,7 @@ our analysis. So let's add our findings to our previous package.json
         "@context": {
           "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
         },
-        "@type": [ "Proportion", "DataSet" ],
+        "@type": [ "Proportion" ],
         "estimate": 0.61905,
         "statTest": {
 	  "@type": "ChisqTest",
