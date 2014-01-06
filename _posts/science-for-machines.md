@@ -258,18 +258,18 @@ our analysis. So let's add our findings to our previous package.json
   "dataset": [
     {
       "name": "stanfordVsHarvard",
-      "@context": {
-        "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
-      },
-      "@type": "propTest",
+      "@type": [ "Proportion", "DataSet" ],
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
       "line": 4,
       "data": {
-        "props": {
-          "p": 0.61905
+        "@context": {
+          "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
         },
-        "chisqTest": {
-          "X2": 0.7619,
+        "@type": [ "Proportion", "DataSet" ],
+        "estimate": 0.61905,
+        "statTest": {
+	  "@type": "ChisqTest",
+          "statistic": 0.7619,
           "df": 1,
           "pValue": 0.19137
         }
