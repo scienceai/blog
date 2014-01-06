@@ -175,8 +175,8 @@ will be packaged like that:
 This ```package.json``` file, contains just enough information so that
 humans _or machines_ can happily consume the data.
 
-Then we publish it on the Standard Analytics
-[data registry](https://github.com/standard-analytics/linked-data-registry).
+Then we publish it on the [Standard Analytics
+data registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
 
@@ -280,7 +280,7 @@ our analysis. So let's add our findings to our previous package.json
 ```
 
 We can now publish this new ```package.json``` on the
-[Standard Analytics registry](https://registry.standard-analytics.io).
+[Standard Analytics registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
 
@@ -305,7 +305,7 @@ transparent, and constructive *quantitative* elements.
 Last, let me stress that by simply walking down the URL, it is
 possible to go from an analytic (here a
 [p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools).
+the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools.csv).
 
 - As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
 
