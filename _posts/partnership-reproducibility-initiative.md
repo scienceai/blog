@@ -46,5 +46,5 @@ that scientist can keep challenging and building upon this work.
 After our work is done, reproducing and challenging any study from
 the reproducibility initiative will be as easy as:
 
-    dpm2 clone author_year
+    ldpm install author_year
 
