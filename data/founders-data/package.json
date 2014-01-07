@@ -1,8 +1,8 @@
 {
-  "name": "founders-data",
+  "name": "founders",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
-  "isBasedOnUrl": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "citation": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
   "license": "DbCL-1.0",
   "repository": [
     {
@@ -10,7 +10,7 @@
       "path": "data/founders-data"
     }
   ],
-  "keywords": ["schools", "graduates", "startup", "unicorn", "founders", "data"],
+  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
   "author": {
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
@@ -19,7 +19,6 @@
     {
       "name": "schools",
       "path": "data/schools.csv",
-      "format": "csv",
       "schema": {
         "fields": [
     	  {

@@ -9,35 +9,37 @@
       "path": "data/founders-analysis"
     }
   ],
-  "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
+  "keywords": [ "schools", "grads", "startup", "unicorns", "founders", "analysis" ],
   "author": {
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
   },
-  "dataDependencies": ["founders-data/0.0.0"],
+  "isBasedOnUrl": [ "../../founders/0.0.0" ],
   "analytics": [
     {
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
-      "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ "founders-data/0.0.0/schools" ],
-      "outputs": [ "stanfordVsHarvard" ]
+      "programmingLanguage": { "name": "R" },
+      "runtime": "R",
+      "targetProduct": { "operatingSystem": "Unix" },
+      "sampleType": "scripts/propTests.R",
+      "input":  [ "founders-data/0.0.0/schools" ],
+      "output": [ "stanfordVsHarvard" ]
     }
   ],
   "dataset": [
     {
       "name": "stanfordVsHarvard",
-      "@type": [ "Proportion", "DataSet" ],
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
       "line": 4,
       "data": {
         "@context": {
-          "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
+          "@vocab": "http://standardanalytics.io/ontologies/stats.jsonld"
         },
-        "@type": [ "Proportion" ],
+        "@type": "Proportion",
         "estimate": 0.61905,
         "statTest": {
-      "@type": "ChisqTest",
+          "@type": "ChisqTest",
           "statistic": 0.7619,
           "df": 1,
           "pValue": 0.19137
