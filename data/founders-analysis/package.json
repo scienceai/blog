@@ -14,7 +14,7 @@
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
   },
-  "isBasedOnUrl": [ "../../founders/0.0.0" ],
+  "isBasedOnUrl": [ "founders/0.0.0" ],
   "analytics": [
     {
       "name": "propTest",
@@ -24,7 +24,7 @@
       "targetProduct": { "operatingSystem": "Unix" },
       "sampleType": "scripts/propTests.R",
       "input":  [ "founders-data/0.0.0/schools" ],
-      "output": [ "stanfordVsHarvard" ]
+      "output": [ "founders-analysis/0.0.0/stanfordVsHarvard" ]
     }
   ],
   "dataset": [
