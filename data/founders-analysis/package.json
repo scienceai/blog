@@ -2,46 +2,45 @@
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "license": {
-    "type": "DbCL-1.0",
-    "url": "http://opendatacommons.org/licenses/dbcl/1.0/"
-  },
-  "repositories": [
+  "license": "DbCL-1.0",
+  "repository": [
     {
-      "type": "git",
-      "url": "https://github.com/standard-analytics/blog.git",
+      "codeRepository": "https://github.com/standard-analytics/blog.git",
       "path": "data/founders-analysis"
     }
   ],
-  "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
-  "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
-  "dataDependencies": {
-    "founders-data": "0.0.0"
+  "keywords": [ "schools", "grads", "startup", "unicorns", "founders", "analysis" ],
+  "author": {
+    "name": "Sebastien Ballesteros",
+    "email": "sebastien@standardanalytics.io"
   },
+  "isBasedOnUrl": [ "founders/0.0.0" ],
   "analytics": [
     {
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
-      "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ { "datapackage": "founders-data", "resource": "schools" } ],
-      "outputs": [ { "resource": "stanfordVsHarvard" } ]
+      "programmingLanguage": { "name": "R" },
+      "runtime": "R",
+      "targetProduct": { "operatingSystem": "Unix" },
+      "sampleType": "scripts/propTests.R",
+      "input":  [ "founders-data/0.0.0/schools" ],
+      "output": [ "founders-analysis/0.0.0/stanfordVsHarvard" ]
     }
   ],
-  "resources": [
+  "dataset": [
     {
       "name": "stanfordVsHarvard",
-      "@context": {
-        "@vocab": "https://raw.github/com/standard-analytics/Schemas/master/"
-      },
-      "@type": "propTest",
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
       "line": 4,
       "data": {
-        "props": {
-          "p": 0.61905
+        "@context": {
+          "@vocab": "http://standardanalytics.io/ontologies/stats.jsonld"
         },
-        "chisqTest": {
-          "X2": 0.7619,
+        "@type": "Proportion",
+        "estimate": 0.61905,
+        "statTest": {
+          "@type": "ChisqTest",
+          "statistic": 0.7619,
           "df": 1,
           "pValue": 0.19137
         }

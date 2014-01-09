@@ -83,15 +83,15 @@ it reusable so that scientists - just like software developers - can
 build new and world-changing things on the back of all of the work
 that has come before. As former academic scientists ourselves, we
 couldn't be more excited to take the first steps toward making this
-dream a reality and we're pleased to introduce you to ```dpm2``` the
+dream a reality and we're pleased to introduce you to ```ldpm``` the
 package manager for data and science.
 
-To find out more about ```dpm2``` and take it for a test run, check
-it out on [github](https://github.com/standard-analytics/dpm2).
+To find out more about ```ldpm``` and take it for a test run, check
+it out on [github](https://github.com/standard-analytics/ldpm).
 
-[![NPM](https://nodei.co/npm/dpm2.png)](https://nodei.co/npm/dpm2/)
+[![NPM](https://nodei.co/npm/ldpm.png)](https://nodei.co/npm/ldpm/)
 
-```dpm2``` is largely inspired by [npm](http://npmjs.org). It
+```ldpm``` is largely inspired by [npm](http://npmjs.org). It
 leverages the same technologies ([node.js](http://nodejs.org/) and
 [CouchDB](http://couchdb.apache.org/)), re-uses a lot of the
 [npm](https://github.com/isaacs/npm) dependencies _but_ differs from
@@ -130,24 +130,20 @@ will be packaged like that:
   "name": "founders-data",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
-  "sources": [{
-    "name": "Mode Analytics blog",
-    "web": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders"
-  }],
-  "license": {
-    "type": "DbCL-1.0",
-    "url": "http://opendatacommons.org/licenses/dbcl/1.0/"
-  },
-  "repositories": [
+  "isBasedOnUrl": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "license": "DbCL-1.0",
+  "repository": [
     {
-      "type": "git",
-      "url": "https://github.com/standard-analytics/blog.git",
+      "codeRepository": "https://github.com/standard-analytics/blog.git",
       "path": "data/founders-data"
     }
   ],
-  "keywords": ["schools", "graduates", "startup", "unicorns", "founders", "data"],
-  "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
-  "resources": [
+  "keywords": ["schools", "graduates", "startup", "unicorn", "founders", "data"],
+  "author": {
+    "name": "Sebastien Ballesteros",
+    "email": "sebastien@standardanalytics.io"
+  },
+  "dataset": [
     {
       "name": "schools",
       "path": "data/schools.csv",
@@ -179,10 +175,10 @@ will be packaged like that:
 This ```package.json``` file, contains just enough information so that
 humans _or machines_ can happily consume the data.
 
-Then we publish it on the Standard Analytics
-[data registry](https://github.com/standard-analytics/data-registry).
+Then we publish it on the [Standard Analytics
+data registry](https://registry.standardanalytics.io).
 
-<pre><code class="bash">$ dpm2 publish</code></pre>
+<pre><code class="bash">$ ldpm publish</code></pre>
 
 Now, if I want to investigate if Stanford graduates founded
 significantly more
@@ -196,35 +192,22 @@ package.json which for now contains nothing else.
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "dataDependencies": {
-    "founders-data": "0.0.0"
-  }
+  "dataDependencies": [ "founders-data/0.0.0" ]
 }
 ```
 
 Running
 
-<pre><code class="bash">$ dpm2 install --cache</code></pre>
+<pre><code class="bash">$ ldpm install --cache</code></pre>
 
 will resolve all the dataDependencies and give me the data I need to
 perform my analysis.
-
-A small note on the ```--cache``` option here: without it, ```dpm2```
-only retrieves a package.json where all the resources data (our csv
-here) have been replaced by
-[URLs](http://en.wikipedia.org/wiki/Uniform_resource_locator). This is
-handy for big data when you might prefer to analyze data as a
-[stream](https://github.com/standard-analytics/data-streams), or
-simply when you just want a small subset of all the resources listed
-in a data package.  But with the ```--cache``` option you get all the
-data!
 
 Having the data I need, I can fire up [R](http://www.r-project.org/)
 and ask, _have Stanford grads founded significantly more unicorns than
 Harvard ones?_
 
-
-<pre><code class="r">schools <- read.csv("../data_modules/founders-data/data/schools.csv")
+<pre><code class="r">schools <- read.csv("../datapackages/founders-data/data/schools.csv")
 stanford <- schools$Unicorns[schools$Schools == "Stanford"]
 harvard <- schools$Unicorns[schools$Schools == "Harvard"]
 prop.test(stanford, stanford + harvard, alternative = "greater")</code></pre>
@@ -234,9 +217,9 @@ But let's not stop here. Statistical results are data after all and
 therefore we can package them too! Even better, the vocabulary for
 statistics is _well defined_ and _bounded_ which means that we can use
 semantic technologies (namely, [JSON-LD](http://json-ld.org) and
-[alps.io](http://alps.io/spec/index.html)) to make it completely clear (to
-both humans and machines) which
-[statistical analytics](https://github.com/standard-analytics/Schemas)
+[RDF](http://www.w3.org/TR/rdf-schema/)) to make it completely clear
+(to both humans and machines) which
+[statistical analytics](https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld)
 were used.
 
 While we are at it, we can also indicate as metadata how the results
@@ -250,46 +233,43 @@ our analysis. So let's add our findings to our previous package.json
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "license": {
-    "type": "DbCL-1.0",
-    "url": "http://opendatacommons.org/licenses/dbcl/1.0/"
-  },
-  "repositories": [
+  "license": "DbCL-1.0",
+  "repository": [
     {
-      "type": "git",
-      "url": "https://github.com/standard-analytics/blog.git",
+      "codeRepository": "https://github.com/standard-analytics/blog.git",
       "path": "data/founders-analysis"
     }
   ],
   "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
-  "author": "Sebastien Ballesteros <sebastien@standardanalytics.io>",
-  "dataDependencies": {
-    "founders-data": "0.0.0"
+  "author": {
+    "name": "Sebastien Ballesteros",
+    "email": "sebastien@standardanalytics.io"
   },
+  "dataDependencies": ["founders-data/0.0.0"],
   "analytics": [
     {
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
       "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ { "datapackage": "founders-data", "resource": "schools" } ],
-      "outputs": [ { "resource": "stanfordVsHarvard" } ]
+      "inputs":  [ "founders-data/0.0.0/schools" ],
+      "outputs": [ "stanfordVsHarvard" ]
     }
   ],
-  "resources": [
+  "dataset": [
     {
       "name": "stanfordVsHarvard",
-      "@context": {
-        "@vocab": "https://raw.github/com/standard-analytics/Schemas/master/"
-      },
-      "@type": "propTest",
+      "@type": [ "Proportion", "DataSet" ],
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
       "line": 4,
       "data": {
-        "props": {
-          "p": 0.61905
+        "@context": {
+          "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
         },
-        "chisqTest": {
-          "X2": 0.7619,
+        "@type": [ "Proportion" ],
+        "estimate": 0.61905,
+        "statTest": {
+	  "@type": "ChisqTest",
+          "statistic": 0.7619,
           "df": 1,
           "pValue": 0.19137
         }
@@ -299,10 +279,10 @@ our analysis. So let's add our findings to our previous package.json
 }
 ```
 
-We can now publish this new ```package.json``` on the Standard
-Analytics [registry](https://github.com/standard-analytics/data-registry).
+We can now publish this new ```package.json``` on the
+[Standard Analytics registry](https://registry.standardanalytics.io).
 
-<pre><code class="bash">$ dpm2 publish</code></pre>
+<pre><code class="bash">$ ldpm publish</code></pre>
 
 With such a file, anyone can _verify_ the results, plus there is more:
 anyone can now **quote** these findings! Let's illustrate this last
@@ -325,7 +305,7 @@ transparent, and constructive *quantitative* elements.
 Last, let me stress that by simply walking down the URL, it is
 possible to go from an analytic (here a
 [p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools).
+the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools.csv).
 
 - As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
 
@@ -333,12 +313,11 @@ the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/sc
 
 - Finally, you can see every published version of the work here: [https://registry.standardanalytics.io/founders-analysis](https://registry.standardanalytics.io/unicorns-stanford)
 
-
 To us, this is the beginning of a _new form of arguing, backed by
 reproducible, quantitative evidence_.
 
 Right now, the full API of the registry is described
-[here](https://github.com/standard-analytics/data-registry). That
+[here](https://github.com/standard-analytics/linked-data-registry). That
 being said we are working to add some
 [hypermedia controls](http://www.markus-lanthaler.com/hydra/) so that
 reading the API doc becomes a thing of the past.
@@ -348,7 +327,5 @@ You may be thinking that generating these ```package.json``` is too
 much hassle, and that scientists and data-enthusiasts have better
 things to do than write such ```package.json``` files. Having been
 there ourselves, we could not agree more: this has to be a **fully
-effortless** process. In the next post we will introduce ```sloth```
-our very own command line tool to _automatically_ generate these
-files.
-
+effortless** process. In a next post we will introduce ```sloth``` our
+very own command line tool to _automatically_ generate these files.
