@@ -1,0 +1,37 @@
+{
+  "name": "founders",
+  "version": "0.0.0",
+  "description": "Data used in Mode Analytics Stanford founders blog post",
+  "citation": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "license": "CC0-1.0",
+  "repository": [
+    {
+      "codeRepository": "https://github.com/standard-analytics/blog.git",
+      "path": "data/founders"
+    }
+  ],
+  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
+  "author": {
+    "name": "Sebastien Ballesteros",
+    "email": "sebastien@standardanalytics.io"
+  },
+  "dataset": [
+    {
+      "name": "schools",
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "Schools":  { "@id": "_:Schools",  "@type": "xsd:string" },
+        "Founders": { "@id": "_:Founders", "@type": "xsd:integer" },
+        "Unicorns": { "@id": "_:Unicorns", "@type": "xsd:integer" }
+      },
+      "about": {
+        "Schools":  { "description": "American top schools" },
+        "Founders": { "description": "Number of startup founders originating from each school" },
+        "Unicorns": { "description": "Number of unicorn founders originating from each school" }
+      },
+      "distribution": {
+        "contentPath": "data/schools.csv"
+      }
+    }
+  ]
+}

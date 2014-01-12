@@ -127,18 +127,18 @@ will be packaged like that:
 
 ```
 {
-  "name": "founders-data",
+  "name": "founders",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
-  "isBasedOnUrl": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
-  "license": "DbCL-1.0",
+  "citation": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "license": "CC0-1.0",
   "repository": [
     {
       "codeRepository": "https://github.com/standard-analytics/blog.git",
-      "path": "data/founders-data"
+      "path": "data/founders"
     }
   ],
-  "keywords": ["schools", "graduates", "startup", "unicorn", "founders", "data"],
+  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
   "author": {
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
@@ -146,33 +146,26 @@ will be packaged like that:
   "dataset": [
     {
       "name": "schools",
-      "path": "data/schools.csv",
-      "format": "csv",
-      "schema": {
-        "fields": [
-    	  {
-    	    "name": "Schools",
-    	    "description": "American top schools",
-    	    "type": "number"
-    	  },
-    	  {
-    	    "name": "Founders",
-    	    "description": "Number of startup founders originating from each school",
-    	    "type": "number"
-    	  },
-    	  {
-    	    "name": "Unicorns",
-    	    "description": "Number of unicorn founders originating from each school",
-    	    "type": "number"
-    	  }
-        ]
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "Schools":  { "@id": "_:Schools",  "@type": "xsd:string" },
+        "Founders": { "@id": "_:Founders", "@type": "xsd:integer" },
+        "Unicorns": { "@id": "_:Unicorns", "@type": "xsd:integer" }
+      },
+      "about": {
+        "Schools":  { "description": "American top schools" },
+        "Founders": { "description": "Number of startup founders originating from each school" },
+        "Unicorns": { "description": "Number of unicorn founders originating from each school" }
+      },
+      "distribution": {
+        "contentPath": "data/schools.csv"
       }
     }
   ]
 }
 ```
 
-This ```package.json``` file, contains just enough information so that
+This ```datapackage.json``` file, contains just enough information so that
 humans _or machines_ can happily consume the data.
 
 Then we publish it on the [Standard Analytics
@@ -184,15 +177,15 @@ Now, if I want to investigate if Stanford graduates founded
 significantly more
 [Unicorns](http://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/)
 (>1B$ valuation startups) than graduates of other universities, I can
-simply list this data package as ```dataDependencies``` of a new
-package.json which for now contains nothing else.
+simply list this data package as dependencies (```isBasedOnUrl```) of a new
+datapackage.json which for now contains nothing else.
 
 ```
 {
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "dataDependencies": [ "founders-data/0.0.0" ]
+  "isBasedOnUrl": [ "founders/0.0.0" ]
 }
 ```
 
@@ -200,14 +193,14 @@ Running
 
 <pre><code class="bash">$ ldpm install --cache</code></pre>
 
-will resolve all the dataDependencies and give me the data I need to
+will resolve all the dependencies and give me the data I need to
 perform my analysis.
 
 Having the data I need, I can fire up [R](http://www.r-project.org/)
 and ask, _have Stanford grads founded significantly more unicorns than
 Harvard ones?_
 
-<pre><code class="r">schools <- read.csv("../datapackages/founders-data/data/schools.csv")
+<pre><code class="r">schools <- read.csv("../datapackages/founders/data/schools.csv")
 stanford <- schools$Unicorns[schools$Schools == "Stanford"]
 harvard <- schools$Unicorns[schools$Schools == "Harvard"]
 prop.test(stanford, stanford + harvard, alternative = "greater")</code></pre>
@@ -224,8 +217,8 @@ were used.
 
 While we are at it, we can also indicate as metadata how the results
 were obtained so that anyone (human or machine) can _fully reproduce_
-our analysis. So let's add our findings to our previous package.json
-(that we originally used to get the dataDependencies).
+our analysis. So let's add our findings to our previous datapackage.json
+(that we originally used to get the dependencies).
 
 
 ```
@@ -240,38 +233,42 @@ our analysis. So let's add our findings to our previous package.json
       "path": "data/founders-analysis"
     }
   ],
-  "keywords": ["schools", "grads", "startup", "unicorns", "founders", "analysis"],
+  "keywords": [ "schools", "grads", "startup", "unicorns", "founders", "analysis" ],
   "author": {
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
   },
-  "dataDependencies": ["founders-data/0.0.0"],
+  "isBasedOnUrl": [ "founders/0.0.0" ],
   "analytics": [
     {
       "name": "propTest",
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
-      "scripts": { "start": "scripts/propTests.R" },
-      "inputs":  [ "founders-data/0.0.0/schools" ],
-      "outputs": [ "stanfordVsHarvard" ]
+      "programmingLanguage": { "name": "R" },
+      "runtime": "R",
+      "targetProduct": { "operatingSystem": "Unix" },
+      "sampleType": "scripts/propTests.R",
+      "input":  [ "founders/0.0.0/dataset/schools" ],
+      "output": [ "founders-analysis/0.0.0/dataset/stanfordVsHarvard" ]
     }
   ],
   "dataset": [
     {
       "name": "stanfordVsHarvard",
-      "@type": [ "Proportion", "DataSet" ],
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
-      "line": 4,
-      "data": {
-        "@context": {
-          "@vocab": "https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld"
-        },
-        "@type": [ "Proportion" ],
-        "estimate": 0.61905,
-        "statTest": {
-	  "@type": "ChisqTest",
-          "statistic": 0.7619,
-          "df": 1,
-          "pValue": 0.19137
+      "isBasedOnUrl": [ "founders-analysis/0.0.0/analytics/propTest#L4" ],
+      "distribution": {
+        "contentData": {
+          "@context": {
+            "@vocab": "http://standardanalytics.io/stats/"
+          },
+          "@type": "Proportion",
+          "estimate": 0.61905,
+          "statTest": {
+            "@type": "ChisqTest",
+            "statistic": 0.7619,
+            "df": 1,
+            "pValue": 0.19137
+          }
         }
       }
     }
@@ -279,7 +276,7 @@ our analysis. So let's add our findings to our previous package.json
 }
 ```
 
-We can now publish this new ```package.json``` on the
+We can now publish this new ```datapackage.json``` on the
 [Standard Analytics registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
@@ -290,13 +287,13 @@ point.
 
 As I said before, every resource of a data package published has its
 own URL. So I can use the following URL
-[https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard)
+[https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard)
 anytime I want to give my text or comments some statistical backbone.
 
 For instance, I can precisely quote that:
 
 > Although Stanford grads have founded more Unicorns than Harvard ones,
-> [there is no evidence to show that this difference is truly significant](https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard).
+> [there is no evidence to show that this difference is truly significant](https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard).
 
 
 And the discussion could progress from there, based on concrete,
@@ -305,9 +302,9 @@ transparent, and constructive *quantitative* elements.
 Last, let me stress that by simply walking down the URL, it is
 possible to go from an analytic (here a
 [p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the [original data](https://registry.standardanalytics.io/founders-data/0.0.0/schools.csv).
+the [original data](https://registry.standardanalytics.io/founders/0.0.0/dataset/schools.csv).
 
-- As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/stanfordVsHarvard)
+- As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/dataset/stanfordVsHarvard)
 
 - The latest version of the full data package is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0](https://registry.standardanalytics.io/unicorns-stanford/0.0.0)
 
@@ -323,9 +320,9 @@ being said we are working to add some
 reading the API doc becomes a thing of the past.
 
 
-You may be thinking that generating these ```package.json``` is too
+You may be thinking that generating these ```datapackage.json``` is too
 much hassle, and that scientists and data-enthusiasts have better
-things to do than write such ```package.json``` files. Having been
+things to do than write such ```datapackage.json``` files. Having been
 there ourselves, we could not agree more: this has to be a **fully
 effortless** process. In a next post we will introduce ```sloth``` our
 very own command line tool to _automatically_ generate these files.

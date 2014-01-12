@@ -1,4 +1,4 @@
-schools <- read.csv("../datapackages/founders-data/data/schools.csv")
+schools <- read.csv("../datapackages/founders/data/schools.csv")
 stanford <- schools$Unicorns[schools$Schools=="Stanford"]
 harvard <- schools$Unicorns[schools$Schools=="Harvard"]
 prop.test(stanford ,stanford + harvard, alternative="greater")
