@@ -175,7 +175,7 @@ We can retrieve the document with:
   "@type": "DataCatalog",
   "name": "founders",
   "version": "0.0.0",
-  "description": "Data used in Mode Analytics Stanford founders blog post",  
+  "description": "Data used in Mode Analytics Stanford founders blog post",
   "dataset": [
     {
       "@id": "founders/0.0.0/dataset/schools",
@@ -284,6 +284,7 @@ our analysis. So let's add our findings to our previous datapackage.jsonld
 
 ```
 {
+  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
