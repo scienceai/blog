@@ -1,0 +1,40 @@
+{
+  "name": "founders",
+  "version": "0.0.0",
+  "description": "Data used in Mode Analytics Stanford founders blog post",
+  "citation": [ 
+    { "url": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders" },
+    { "url": "http://blog.modeanalytics.com/are-stanford-grads-good-investments/" }
+  ],
+  "license": "CC0-1.0",
+  "repository": [
+    {
+      "codeRepository": "https://github.com/standard-analytics/blog.git",
+      "path": "data/founders"
+    }
+  ],
+  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
+  "author": {
+    "name": "Sebastien Ballesteros",
+    "email": "sebastien@standardanalytics.io"
+  },
+  "dataset": [
+    {
+      "name": "schools",
+      "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "school":  { "@id": "_:school",  "@type": "xsd:string" },
+        "founders": { "@id": "_:founders", "@type": "xsd:integer" },
+        "unicorns": { "@id": "_:unicorns", "@type": "xsd:integer" }
+      },
+      "about": {
+        "school":  { "description": "American top schools" },
+        "founders": { "description": "Number of startup founders originating from each school" },
+        "unicorns": { "description": "Number of unicorn founders originating from each school" }
+      },
+      "distribution": {
+        "contentPath": "data/schools.csv"
+      }
+    }
+  ]
+}

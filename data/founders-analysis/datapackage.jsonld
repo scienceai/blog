@@ -2,7 +2,7 @@
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "license": "DbCL-1.0",
+  "license": "CC0-1.0",
   "repository": [
     {
       "codeRepository": "https://github.com/standard-analytics/blog.git",
@@ -23,26 +23,28 @@
       "runtime": "R",
       "targetProduct": { "operatingSystem": "Unix" },
       "sampleType": "scripts/propTests.R",
-      "input":  [ "founders-data/0.0.0/schools" ],
-      "output": [ "founders-analysis/0.0.0/stanfordVsHarvard" ]
+      "input":  [ "founders/0.0.0/dataset/schools" ],
+      "output": [ "founders-analysis/0.0.0/dataset/stanfordVsHarvard" ] 
     }
   ],
   "dataset": [
     {
       "name": "stanfordVsHarvard",
       "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
-      "line": 4,
-      "data": {
-        "@context": {
-          "@vocab": "http://standardanalytics.io/ontologies/stats.jsonld"
-        },
-        "@type": "Proportion",
-        "estimate": 0.61905,
-        "statTest": {
-          "@type": "ChisqTest",
-          "statistic": 0.7619,
-          "df": 1,
-          "pValue": 0.19137
+      "isBasedOnUrl": [ "founders-analysis/0.0.0/analytics/propTest#L4" ],
+      "distribution": {
+        "contentData": {
+          "@context": {
+            "@vocab": "http://standardanalytics.io/stats/"
+          },
+          "@type": "Proportion",
+          "estimate": 0.61905,
+          "statTest": {
+            "@type": "ChisqTest",
+            "statistic": 0.7619,
+            "df": 1,
+            "pValue": 0.19137
+          }
         }
       }
     }
