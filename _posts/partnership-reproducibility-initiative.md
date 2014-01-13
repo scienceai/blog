@@ -43,7 +43,7 @@ analytics from both the original studies and the reproduced ones can be
 fully reproduced and made available in the best possible formats so
 that scientist can keep challenging and building upon this work.
 
-After our work is done, obtaining the data and results of any study from
+After our work is done, reproducing and challenging  any study from
 the reproducibility initiative will be as easy as:
 
     ldpm install author_year
