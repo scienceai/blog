@@ -113,7 +113,7 @@ Running:
 
 <pre><code class="bash">$ ldpm init school.csv</code></pre>
 
-wrap the [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file
+wraps the [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file
 ```school.csv``` containing the data of interest
 
 ```
@@ -199,19 +199,19 @@ We can retrieve the document with:
 }
 ```
 
-and realise that ```@id``` properties have been added. These
-properties indicates the URLs where each nodes of the document can be
+and we can see that ```@id``` properties have been added. These
+properties indicate the URLs where each node of the document can be
 retrieved.  All the URLs are relative to a base defined in the
 @context.
 
 <pre><code class="json">"@base": "https://registry.standardanalytics.io/"</code></pre>
 
-The context also allows machine to know which of the preperties are
+The context also allows machine to know which of the properties are
 indeed URLs. For instance, a human can easily understand that
 
 <pre><code class="json">contentUrl: "founders/0.0.0/dataset/schools/schools.csv"</code></pre>
 
-indicate a relative URL pointing to the content of the dataset but for
+indicates a relative URL pointing to the content of the dataset but for
 a machine ```contentUrl``` only contains a string. If we look closer at our
 context:
 
@@ -222,11 +222,11 @@ context:
 we can see that the semantic of ```contentUrl``` is the one of
 [http://schema.org/contentUrl](http://schema.org/contentUrl) and it's
 type is ```@id``` which is how [JSON-LD](http://json-ld.org/) allows
-to specify that a string is indeed an URL.
+to specify that a string is indeed a URL.
 
 The document is still as familiar as a classical
 [package.json](http://wiki.commonjs.org/wiki/Packages/1.1) but a
-computer can now pick out the hypermedia links!
+machine can now pick out the hypermedia links!
 
 Now let's see how one can consume this datapackage into an analysis.
 
@@ -235,7 +235,7 @@ more
 [Unicorns](http://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/)
 (>1B$ valuation startups) than graduates of other universities, I can
 simply list this data package as dependencies (```isBasedOnUrl```) of
-a new datapackage.jsonld which for now contains nothing else.
+a new datapackage.jsonld which, for now, contains nothing else.
 
 
 ```
@@ -347,7 +347,7 @@ anyone can now **quote** these findings! Let's illustrate this last
 point.
 
 As I said before, every resource of a data package published acquires
-its own URL, indicated by it's ```@id```. I can retrieve the
+its own URL, indicated by its ```@id```. I can retrieve the
 published document (to know the ```@id```) with:
 
 <pre><code class="bash">$ ldpm cat founders-analysis</code></pre>
@@ -365,7 +365,7 @@ For instance, I can precisely quote that:
 And the discussion could progress from there, based on concrete,
 transparent, and constructive *quantitative* elements.
 
-Last, let me stress that by simply following the ```@id``` of the
+Lastly, let me stress that by simply following the ```@id``` of the
 [JSON-LD](http://json-ld.org/) document, it is possible to go from an
 analytic (here a [p-value](http://en.wikipedia.org/wiki/P-value)) all
 the way back to the
