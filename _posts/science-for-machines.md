@@ -2,7 +2,7 @@
 	"title" : "Science 3.0: science for machines",
 	"tags": [ "blog" ],
 	"category" : "announcement",
-	"date" : "12-20-2013",
+	"date" : "01-12-2014",
     "author": "Sebastien"
 }}}
 
@@ -14,11 +14,11 @@ can simply specify other existing programs that the project depends on
 (much like scientists want to reference other published papers) and
 these 'dependencies' are installed with their new project using
 [npm](http://npmjs.org). Amazing, and really fun too. In science
-today, this workflow simply does not exist.  This is because references
-('dependencies') are in static, often proprietary formats.  Additionally,
-incorporating raw data from other studies requires manual extraction. Finally, 
-re-implementing previously published methods
-is rarely possible, as publishing data and analytics in a
+today, this workflow simply does not exist.  This is because
+references ('dependencies') are in static, often proprietary formats.
+Additionally, incorporating raw data from other studies requires
+manual extraction. Finally, re-implementing previously published
+methods is rarely possible, as publishing data and analytics in a
 standardized, linked format is not common practice.
 
 <figure style="border:1px solid grey; padding:10px;">
@@ -77,30 +77,28 @@ standardized, linked format is not common practice.
 </figure>
 
 
-
 At Standard Analytics we package science in an accessible way and make
 it reusable so that scientists - just like software developers - can
 build new and world-changing things on the back of all of the work
 that has come before. As former academic scientists ourselves, we
 couldn't be more excited to take the first steps toward making this
 dream a reality and we're pleased to introduce you to ```ldpm``` the
-package manager for data and science.
+linked data package manager.
 
-To find out more about ```ldpm``` and take it for a test run, check
-it out on [github](https://github.com/standard-analytics/ldpm).
+To find out more about ```ldpm``` and take it for a test run, check it
+out on [github](https://github.com/standard-analytics/ldpm).
 
 [![NPM](https://nodei.co/npm/ldpm.png)](https://nodei.co/npm/ldpm/)
 
-```ldpm``` is largely inspired by [npm](http://npmjs.org). It
-leverages the same technologies ([node.js](http://nodejs.org/) and
-[CouchDB](http://couchdb.apache.org/)), re-uses a lot of the
+```ldpm``` is inspired by [npm](http://npmjs.org). It leverages the
+same technologies ([node.js](http://nodejs.org/)), re-uses a lot of the
 [npm](https://github.com/isaacs/npm) dependencies _but_ differs from
-npm in a very important way: we store
-[data packages](http://dataprotocols.org/data-packages/) so that
-- Each piece of data has its own [URL](http://en.wikipedia.org/wiki/Uniform_resource_locator), and
-- Powerful semantic search can be performed.
+npm in a very important way: it leverages
+[JSON-LD](http://json-ld.org/) and
+[RDF](http://www.w3.org/TR/rdf-primer/).
 
-Let's see in practice why this matters with a detailed walk through, using an example.
+Let's see in practice why this matters with a detailed walk through,
+using an example.
 
 One of the latest blog posts of
 [Mode Analytics](http://blog.modeanalytics.com/), presents an analysis
@@ -110,34 +108,32 @@ discussed is openly shared on
 [their Github account](https://github.com/mode/blog).  Let's package
 these data so that they can be easily re-used _ala npm_.
 
-For that we create a [data package](http://dataprotocols.org/data-packages/).
+For that we create a data package.
+Running:
 
-A [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file
+<pre><code class="bash">$ ldpm init school.csv</code></pre>
+
+wrap the [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file
 ```school.csv``` containing the data of interest
 
 ```
-"Schools","Founders","Unicorns"
+"school","founders","unicorns"
 "Stanford",482,13
 "Harvard",487,8
 "Berkeley",158,5
 ...
 ```
 
-will be packaged like that:
+into the following [JSON-LD](http://json-ld.org/) document (```datapackage.jsonld```).
 
 ```
 {
+  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
   "name": "founders",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
-  "citation": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "citation": [ { "url": "http://blog.modeanalytics.com/are-stanford-grads-good-investments/" } ],
   "license": "CC0-1.0",
-  "repository": [
-    {
-      "codeRepository": "https://github.com/standard-analytics/blog.git",
-      "path": "data/founders"
-    }
-  ],
   "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
   "author": {
     "name": "Sebastien Ballesteros",
@@ -146,17 +142,6 @@ will be packaged like that:
   "dataset": [
     {
       "name": "schools",
-      "@context": {
-        "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "Schools":  { "@id": "_:Schools",  "@type": "xsd:string" },
-        "Founders": { "@id": "_:Founders", "@type": "xsd:integer" },
-        "Unicorns": { "@id": "_:Unicorns", "@type": "xsd:integer" }
-      },
-      "about": {
-        "Schools":  { "description": "American top schools" },
-        "Founders": { "description": "Number of startup founders originating from each school" },
-        "Unicorns": { "description": "Number of unicorn founders originating from each school" }
-      },
       "distribution": {
         "contentPath": "data/schools.csv"
       }
@@ -165,23 +150,97 @@ will be packaged like that:
 }
 ```
 
-This ```datapackage.json``` file, contains just enough information so that
-humans _or machines_ can happily consume the data.
+The ```@context``` allows to map our document keys (```name```,
+```version```, ```description```) to
+[URLs](http://en.wikipedia.org/wiki/Uniform_resource_locator) so that
+the semantic of the keys are precisely defined. For instance our context
+maps ```name``` to
+[```http://schema.org/name```](http://schema.org/name) making our
+document entirely self describing for both human _and_ machines.
 
-Then we publish it on the [Standard Analytics
-data registry](https://registry.standardanalytics.io).
+Then we publish it on the
+[Standard Analytics data registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
 
-Now, if I want to investigate if Stanford graduates founded
-significantly more
-[Unicorns](http://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/)
-(>1B$ valuation startups) than graduates of other universities, I can
-simply list this data package as dependencies (```isBasedOnUrl```) of a new
-datapackage.json which for now contains nothing else.
+We can retrieve the document with:
+
+<pre><code class="bash">$ ldpm cat founders</code></pre>
+
 
 ```
 {
+  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
+  "@id": "founders/0.0.0",
+  "@type": "DataCatalog",
+  "name": "founders",
+  "version": "0.0.0",
+  "description": "Data used in Mode Analytics Stanford founders blog post",  
+  "dataset": [
+    {
+      "@id": "founders/0.0.0/dataset/schools",
+      "@type": "Dataset",
+      "name": "schools",
+      "distribution": {
+        "@type": "DataDownload"
+        "contentPath": "data/schools.csv",
+        "contentUrl": "founders/0.0.0/dataset/schools/schools.csv",
+        "contentSize": 193,
+        "encodingFormat": "csv",
+        "hashAlgorithm": "md5",
+        "hashValue": "9e30179291974489de0171946bf26ff2",
+        "encoding": {
+          "contentSize": 167,
+          "encodingFormat": "gzip"
+        }
+      }
+    }
+  ]
+}
+```
+
+and realise that ```@id``` properties have been added. These
+properties indicates the URLs where each nodes of the document can be
+retrieved.  All the URLs are relative to a base defined in the
+@context.
+
+<pre><code class="json">"@base": "https://registry.standardanalytics.io/"</code></pre>
+
+The context also allows machine to know which of the preperties are
+indeed URLs. For instance, a human can easily understand that
+
+<pre><code class="json">contentUrl: "founders/0.0.0/dataset/schools/schools.csv"</code></pre>
+
+indicate a relative URL pointing to the content of the dataset but for
+a machine ```contentUrl``` only contains a string. If we look closer at our
+context:
+
+
+<pre><code class="json">"isBasedOnUrl": { "@id": "http://schema.org/isBasedOnUrl", "@type": "@id" }</code></pre>
+
+
+we can see that the semantic of ```contentUrl``` is the one of
+[http://schema.org/contentUrl](http://schema.org/contentUrl) and it's
+type is ```@id``` which is how [JSON-LD](http://json-ld.org/) allows
+to specify that a string is indeed an URL.
+
+The document is still as familiar as a classical
+[package.json](http://wiki.commonjs.org/wiki/Packages/1.1) but a
+computer can now pick out the hypermedia links!
+
+Now let's see how one can consume this datapackage into an analysis.
+
+If I want to investigate if Stanford graduates founded significantly
+more
+[Unicorns](http://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/)
+(>1B$ valuation startups) than graduates of other universities, I can
+simply list this data package as dependencies (```isBasedOnUrl```) of
+a new datapackage.jsonld which for now contains nothing else.
+
+
+```
+{
+  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
@@ -193,31 +252,33 @@ Running
 
 <pre><code class="bash">$ ldpm install --cache</code></pre>
 
-will resolve all the dependencies and give me the data I need to
-perform my analysis.
+will resolve all the dependencies (indicated by the relative URLs
+listed in ```isBasedOnUrl```) and give me the data I need to perform
+my analysis.
 
 Having the data I need, I can fire up [R](http://www.r-project.org/)
 and ask, _have Stanford grads founded significantly more unicorns than
 Harvard ones?_
 
 <pre><code class="r">schools <- read.csv("../datapackages/founders/data/schools.csv")
-stanford <- schools$Unicorns[schools$Schools == "Stanford"]
-harvard <- schools$Unicorns[schools$Schools == "Harvard"]
+stanford <- schools$unicorns[schools$school == "Stanford"]
+harvard <- schools$unicorns[schools$school == "Harvard"]
 prop.test(stanford, stanford + harvard, alternative = "greater")</code></pre>
 
 
 But let's not stop here. Statistical results are data after all and
 therefore we can package them too! Even better, the vocabulary for
-statistics is _well defined_ and _bounded_ which means that we can use
-semantic technologies (namely, [JSON-LD](http://json-ld.org) and
+statistics is _well defined_ and _bounded_ which means that we can
+keep using our semantic technologies (namely,
+[JSON-LD](http://json-ld.org) and
 [RDF](http://www.w3.org/TR/rdf-schema/)) to make it completely clear
 (to both humans and machines) which
-[statistical analytics](https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld)
+[statistical analytics](https://raw.github.com/standard-analytics/terms)
 were used.
 
 While we are at it, we can also indicate as metadata how the results
 were obtained so that anyone (human or machine) can _fully reproduce_
-our analysis. So let's add our findings to our previous datapackage.json
+our analysis. So let's add our findings to our previous datapackage.jsonld
 (that we originally used to get the dependencies).
 
 
@@ -226,7 +287,7 @@ our analysis. So let's add our findings to our previous datapackage.json
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "license": "DbCL-1.0",
+  "license": "CC0-1.0",
   "repository": [
     {
       "codeRepository": "https://github.com/standard-analytics/blog.git",
@@ -276,7 +337,7 @@ our analysis. So let's add our findings to our previous datapackage.json
 }
 ```
 
-We can now publish this new ```datapackage.json``` on the
+We can now publish this new ```datapackage.jsonld``` on the
 [Standard Analytics registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
@@ -285,9 +346,14 @@ With such a file, anyone can _verify_ the results, plus there is more:
 anyone can now **quote** these findings! Let's illustrate this last
 point.
 
-As I said before, every resource of a data package published has its
-own URL. So I can use the following URL
-[https://registry.standardanalytics.io/founders-analysis/0.0.0/stanfordVsHarvard](https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard)
+As I said before, every resource of a data package published acquires
+its own URL, indicated by it's ```@id```. I can retrieve the
+published document (to know the ```@id```) with:
+
+<pre><code class="bash">$ ldpm cat founders-analysis</code></pre>
+
+Having the ```@id```, I can use the following URLs
+[https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard](https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/dataset/stanfordVsHarvard)
 anytime I want to give my text or comments some statistical backbone.
 
 For instance, I can precisely quote that:
@@ -299,10 +365,11 @@ For instance, I can precisely quote that:
 And the discussion could progress from there, based on concrete,
 transparent, and constructive *quantitative* elements.
 
-Last, let me stress that by simply walking down the URL, it is
-possible to go from an analytic (here a
-[p-value](http://en.wikipedia.org/wiki/P-value)) all the way back to
-the [original data](https://registry.standardanalytics.io/founders/0.0.0/dataset/schools.csv).
+Last, let me stress that by simply following the ```@id``` of the
+[JSON-LD](http://json-ld.org/) document, it is possible to go from an
+analytic (here a [p-value](http://en.wikipedia.org/wiki/P-value)) all
+the way back to the
+[original data](https://registry.standardanalytics.io/founders/0.0.0/dataset/schools/schools.csv).
 
 - As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/dataset/stanfordVsHarvard)
 
@@ -317,12 +384,11 @@ Right now, the full API of the registry is described
 [here](https://github.com/standard-analytics/linked-data-registry). That
 being said we are working to add some
 [hypermedia controls](http://www.markus-lanthaler.com/hydra/) so that
-reading the API doc becomes a thing of the past.
+reading the API doc for the unsafe transitions (PUT, POST, DELETE)
+becomes a thing of the past.
 
-
-You may be thinking that generating these ```datapackage.json``` is too
-much hassle, and that scientists and data-enthusiasts have better
-things to do than write such ```datapackage.json``` files. Having been
-there ourselves, we could not agree more: this has to be a **fully
-effortless** process. In a next post we will introduce ```sloth``` our
-very own command line tool to _automatically_ generate these files.
+You may be thinking that generating these ```datapackage.jsonld``` is
+too much hassle, and that scientists and data-enthusiasts have better
+things to do than write such ```datapackage.jsonld``` files. Having
+been there ourselves, we could not agree more: this has to be a
+**fully effortless** process. So stay tuned for our launch!

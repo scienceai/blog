@@ -2,7 +2,7 @@
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
-  "license": "DbCL-1.0",
+  "license": "CC0-1.0",
   "repository": [
     {
       "codeRepository": "https://github.com/standard-analytics/blog.git",

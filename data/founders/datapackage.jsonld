@@ -2,7 +2,10 @@
   "name": "founders",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
-  "citation": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders",
+  "citation": [ 
+    { "url": "https://github.com/mode/blog/tree/master/2013-12-06%20Stanford%20Founders" },
+    { "url": "http://blog.modeanalytics.com/are-stanford-grads-good-investments/" }
+  ],
   "license": "CC0-1.0",
   "repository": [
     {
@@ -20,14 +23,14 @@
       "name": "schools",
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "Schools":  { "@id": "_:Schools",  "@type": "xsd:string" },
-        "Founders": { "@id": "_:Founders", "@type": "xsd:integer" },
-        "Unicorns": { "@id": "_:Unicorns", "@type": "xsd:integer" }
+        "school":  { "@id": "_:school",  "@type": "xsd:string" },
+        "founders": { "@id": "_:founders", "@type": "xsd:integer" },
+        "unicorns": { "@id": "_:unicorns", "@type": "xsd:integer" }
       },
       "about": {
-        "Schools":  { "description": "American top schools" },
-        "Founders": { "description": "Number of startup founders originating from each school" },
-        "Unicorns": { "description": "Number of unicorn founders originating from each school" }
+        "school":  { "description": "American top schools" },
+        "founders": { "description": "Number of startup founders originating from each school" },
+        "unicorns": { "description": "Number of unicorn founders originating from each school" }
       },
       "distribution": {
         "contentPath": "data/schools.csv"
