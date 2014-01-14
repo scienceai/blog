@@ -37,3 +37,44 @@ pre code {
 .hn-button{
   vertical-align: middle;
 }
+
+.l-box {
+  line-height:1em;
+  padding: 1em;
+}
+
+#obesity a {
+  color: #36648B;
+  text-decoration: none;
+}
+#obesity a:hover {
+  text-decoration: underline;
+}
+
+#obesity .html-tag{
+ color: rgb(34, 239, 103);
+}
+
+#obesity .rdfa-tag{
+ color: rgb(255, 103, 0);
+}
+
+#obesity .is-based-on-url{
+  color: #36648B;
+ /* color: rgb(13, 188, 55); */
+}
+
+#obesity-json {
+  line-height:1em;
+  padding: 1em;
+}
+
+#obesity-json .stats{
+/*  font-weight:bold; */
+/* color: rgb(239, 58, 171); */
+}
+
+#obesity-R .stats{
+/*  font-weight:bold;*/
+/* color: rgb(239, 58, 171); */
+}
