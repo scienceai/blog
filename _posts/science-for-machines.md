@@ -327,7 +327,7 @@ our analysis. So let's add our findings to our previous datapackage.jsonld
           "estimate": 0.61905,
           "statTest": {
             "@type": "ChisqTest",
-            "statistic": 0.7619,
+            "testStatistic": 0.7619,
             "df": 1,
             "pValue": 0.19137
           }
