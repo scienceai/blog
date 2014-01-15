@@ -31,25 +31,18 @@ what can be done with pen and paper. Let's take the following HTML snippet,
 inspired from a [New York Times blog post](http://economix.blogs.nytimes.com/2009/05/05/obesity-and-the-fastness-of-food/):
 
 
-
-
-
   <div class="pure-g-r">
     <div class="pure-u-1-2">
       <div class="l-box">
-        <pre id="obesity">
+        <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p&gt;</span>
-The French spend the most time per day eating, but have one of 
-the lowest obesity rates among developed nations. Coincidence? 
-Maybe not, there does seem to be some correlation among OECD 
-countries (cor = -0.45,  p   = 0.06).
+The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, there does seem to be some correlation among OECD countries (cor = -0.45,  p   = 0.06).
 <span class="html-tag">&lt;/p&gt;</span>
         </pre>
       </div>
     </div>
     <div class="pure-u-1-2">
-      <div class="l-box">
-	<blockquote>  
+	<blockquote>
 <p> 
 The French spend the most time per day eating, but have one of
 the lowest obesity rates among developed nations. Coincidence? 
@@ -57,7 +50,6 @@ Maybe not, there does seem to be some correlation among OECD
 countries (cor = -0.45,  p   = 0.06).
 </p>
 	</blockquote>
-      </div>
     </div>
   </div>
 
@@ -102,27 +94,22 @@ attributes:
 
 
   <div class="pure-g-r">
-    <div class="pure-u-1-2">
-      <div class="l-box">
-        <pre id="obesity">
+    <div class="pure-u-3-5">
+      <div class="l-box" style="padding-top:0px;">
+        <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p</span> <span class="rdfa-tag">vocab</span>="<a href="http://schema.org/">http://schema.org/</a>" 
    <span class="rdfa-tag">prefix</span>="<a href="http://schema.org/">stats: http://standardanalytics.io/stats/</a>" 
    <span class="rdfa-tag">resource</span>="<a href="#obesity">#obesity</a>"
    <span class="rdfa-tag">typeof</span>="<a href="http://schema.org/Comment">Comment</a> <a href="http://standardanalytics.io/stats/Correlation">stats:Correlation</a>"<span class="html-tag">&gt;</span>
-The French spend the most time per day eating, but have one of 
-the lowest obesity rates among developed nations. Coincidence? 
-Maybe not, there does seem to be some correlation among OECD 
-countries 
+The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, there does seem to be some correlation among OECD countries 
 (cor = <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/estimate">stats:estimate</a>"<span class="html-tag">&gt;</span>-0.45<span class="html-tag">&lt;/span&gt;</span>,
  p =   <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/pValue">stats:pValue</a>"<span class="html-tag">&gt;</span>   0.06<span class="html-tag">&lt;/span&gt;</span>).
 <span class="html-tag">&lt;/p&gt;</span>
         </pre>
       </div>
     </div>
-    <div class="pure-u-1-2">
-      <div class="l-box">
-        <br>
-	<blockquote>  
+    <div class="pure-u-2-5">
+	<blockquote>
 <p vocab="http://schema.org/" 
    prefix="stats: http://standardanalytics.io/stats/" 
    resource="#obesity" 
@@ -135,7 +122,6 @@ countries
  p   = <span property="stats:pValue"> 0.06</span>).
 </p>
 	</blockquote>
-      </div>
     </div>
   </div>
 
@@ -177,17 +163,14 @@ It would simply look like that:
 
 
   <div class="pure-g-r">
-    <div class="pure-u-1-2">
-      <div class="l-box">
-        <pre id="obesity">
+    <div class="pure-u-3-5">
+      <div class="l-box" style="padding-top:0px;">
+        <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p</span> <span class="rdfa-tag">vocab</span>="<a href="http://schema.org/">http://schema.org/</a>" 
    <span class="rdfa-tag">prefix</span>="<a href="http://schema.org/">stats: http://standardanalytics.io/stats/</a>" 
    <span class="rdfa-tag">resource</span>="<a href="#obesity">#obesity</a>"
    <span class="rdfa-tag">typeof</span>="<a href="http://schema.org/Comment">Comment</a> <a href="http://standardanalytics.io/stats/Correlation">stats:Correlation</a>"<span class="html-tag">&gt;</span>
-The French spend the most time per day eating, but have one of 
-the lowest obesity rates among developed nations. Coincidence? 
-Maybe not, there does seem to be some correlation among OECD 
-countries 
+The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, there does seem to be some correlation among OECD countries 
 (<span class="html-tag">&lt;a</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/isBasedOnUrl" class="is-based-on-url">isBasedOnUrl</a>" 
     <span class="html-tag">href</span>="<a href="http://registry.standardanalytics.io/obesity-analysis/0.0.0"><span class="is-based-on-url">http://r.standardanalytics.io/obesity/0.0.0</span></a>"<span class="html-tag">&gt;</span>
  cor = <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/estimate">stats:estimate</a>"<span class="html-tag">&gt;</span>-0.45<span class="html-tag">&lt;/span&gt;</span>,
@@ -197,10 +180,8 @@ countries
         </pre>
       </div>
     </div>
-    <div class="pure-u-1-2">
-      <div class="l-box">
-        <br>
-	<blockquote>  
+    <div class="pure-u-2-5">
+	<blockquote>
 <p vocab="http://schema.org/" 
    prefix="stats: http://standardanalytics.io/stats/" 
    resource="#obesity" 
@@ -214,13 +195,13 @@ countries
  p   = <span property="stats:pValue"> 0.06</span>
  </a>).
 </p>
-      </div>
+	</blockquote>
     </div>
   </div>
 
 with the link taking me to a [5-stars](http://5stardata.info/) description of the analysis:
 
-<pre id="obesity-json">
+<pre id="obesity-json"><code>
 {
   "@context": "<a href="https://registry.standardanalytics.io/contexts/datapackage.jsonld">https://r.standardanalytics.io/contexts/datapackage.jsonld</a>",
   "name": "obesity-analysis",
@@ -237,9 +218,9 @@ with the link taking me to a [5-stars](http://5stardata.info/) description of th
   "keywords": [ "Obesity", "Fast", "Food", "OECD" ],
   "author": {
     "name": "Joseph Dureau",
-    "email": "<a href="mailto:joseph@standardanalytics.io">joseph@standardanalytics.io</a>",
+    "email": "<a href="mailto:joseph@standardanalytics.io">joseph@standardanalytics.io</a>"
   },
-  "isBasedOnUrl": [ "<a href="https://r.standardanalytics.io/obesity/0.0.0">https://r.standardanalytics.io/obesity/0.0.0</a>" ],
+  "isBasedOnUrl": [ "<a href="https://registry.standardanalytics.io/obesity/0.0.0">https://r.standardanalytics.io/obesity/0.0.0</a>" ],
   "analytics": [
     {
       "name": "correlationTest",
@@ -255,10 +236,7 @@ with the link taking me to a [5-stars](http://5stardata.info/) description of th
   "dataset": [
     { 
       "name": "obesityFoodFastness",
-      "description": "Is the obesity rate in a country (percentage of national 
-                      population with a body mass index higher than 30) 
-                      correlated with the average number of minutes people 
-                      spend eating each day?",
+      "description": "Is the obesity rate in a country (percentage of national population with a body mass index higher than 30) correlated with the average number of minutes people spend eating each day?",
       "isBasedOnUrl": [ "<a href="https://registry.standardanalytics.io/obesity-analysis/0.0.0/analytics/correlationTest#3">obesity-analysis/0.0.0/analytics/correlationTest#3</a>" ],
       "distribution": {
         "@context": { "@vocab": "<a href="http://standardanalytics.io/stats">http://standardanalytics.io/stats</a>" },
@@ -276,7 +254,7 @@ with the link taking me to a [5-stars](http://5stardata.info/) description of th
     }
   ]
 }
-</pre>	
+</code></pre>	
 
 The raw data these results depend on can be retrieved following the [isBasedOnUrl](https://registry.standardanalytics.io/obesity/0.0.0) 
 link: the quantitative argument is now
@@ -301,11 +279,11 @@ script for every analytic you wish to export in [JSON-LD]((http://json-ld.org/)
 format:
 
 
-<pre id="obesity-R">	
+<pre id="obesity-R"><code class="r">
    obesity <- read.csv('obesity.csv')
    result = cor.test(obesity$ObesityRate,obesity$MinutesSpentEating)
    <span class="stats">RJSONLD.export</span>(result,'ObesityFoodFastness.jsonld')	
-</pre>	
+</code></pre>	
 
 
 
@@ -330,17 +308,4 @@ browsable, and how to export shareable [JSON-LD](http://json-ld.org/) versions o
 statistical results in [R](http://www.r-project.org/). To learn about 
 automatically marking up and packaging your analysis to publish [five-stars science](http://5stardata.info/)
 in three simple steps, stay tuned!
-
-
-
-
-
-
-
-
-
-
-
-
-
 
