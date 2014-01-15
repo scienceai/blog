@@ -61,13 +61,13 @@ perspective with results from other studies on the same subject. But wouldn't
 that be helpful?
 
 
-Inspiration to move forward can be found in the [schema.org](schema.org)
+Inspiration to move forward can be found in the [schema.org](http://schema.org)
 initiative, a collaboration between the main search 
-engines, including [Bing](bing.com), [Google](Google.com), [Yahoo!](yahoo.com) 
-and [Yandex](yandex.com), that have started in 2011 defining a collection of [schemas](http://en.wikipedia.org/wiki/RDF_Schema), 
+engines, including [Bing](http://bing.com), [Google](http://Google.com), [Yahoo!](http://yahoo.com) 
+and [Yandex](http://yandex.com), that have started in 2011 defining a collection of [schemas](http://en.wikipedia.org/wiki/RDF_Schema), 
 or [html tags](http://www.w3schools.com/html/html5_semantic_elements.asp), that 
 webmasters can use to mark up their pages. 
-This type of shared vocabularies has brought machines to a first level of 
+This type of shared vocabularies have brought machines to a first level of 
 understanding: they can know when they are referring to the same notion, which 
 sets the basis for smarter communication. The schemas also define an ontology, 
  sets of relations between these common notions. For example, they state 
@@ -81,7 +81,7 @@ and can be told what to do with their content.
 
 
 Structured data has contributed to the explosion of services on the web, and not 
-only from the *search* companies. For example, the [BBC](http://www.bbc.co.uk/blogs/internet/posts/Linked-Data-Connecting-together-the-BBCs-Online-Content), 
+only from the *search* companies. For example, the [BBC](http://www.bbc.co.uk/blogs/internet/posts/Linked-Data-Connecting-together-the-BBCs-Online-Content) 
 has built a stunning [Wildlife finder](http://www.bbc.co.uk/nature/wildlife) 
 that aggregates and organizes data from all over the web for every single 
 living species on the planet! Another exciting example is the [Veterans Job Bank](http://www.whitehouse.gov/blog/2011/11/07/open-innovation-heroes-introducing-veterans-job-bank) initiative of the [White House](http://www.whitehouse.gov/), 
@@ -98,7 +98,7 @@ attributes:
       <div class="l-box" style="padding-top:0px;">
         <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p</span> <span class="rdfa-tag">vocab</span>="<a href="http://schema.org/">http://schema.org/</a>" 
-   <span class="rdfa-tag">prefix</span>="<a href="http://schema.org/">stats: http://standardanalytics.io/stats/</a>" 
+   <span class="rdfa-tag">prefix</span>="<a href="http://standardanalytics.io/stats/">stats: http://standardanalytics.io/stats/</a>" 
    <span class="rdfa-tag">resource</span>="<a href="#obesity">#obesity</a>"
    <span class="rdfa-tag">typeof</span>="<a href="http://schema.org/Comment">Comment</a> <a href="http://standardanalytics.io/stats/Correlation">stats:Correlation</a>"<span class="html-tag">&gt;</span>
 The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, there does seem to be some correlation among OECD countries 
@@ -147,7 +147,7 @@ arbitrary. It leaves it to the readers to faithfully
 believe and interprete the numbers, or to manually make their way to the 
 supplementary materials (in best case scenarios of scientific publishing) 
 or write to the author for more 
-details. This point has understandably fed vivid discussions [online](http://andrewgelman.com/2013/12/17/replication-backlash/) 
+details. This point has understandably fed vivid discussions [online](http://phys.org/news/2013-09-science-crisis.html) 
 and in [newspapers](http://www.economist.com/news/briefing/21588057-scientists-think-science-self-correcting-alarming-degree-it-not-trouble) 
 on verifiability and reusability of results, shedding skepticism over 
 [scientific findings in general](http://www.nytimes.com/2012/04/17/science/rise-in-scientific-journal-retractions-prompts-calls-for-reform.html). 
@@ -155,7 +155,7 @@ Again, schemas and linked data provide with a simple solution here. What if I
 could attach to my argument an unambiguous description of how I got to the 
 stated numbers, in the standard format that is used to exchange linked data 
 on the web (a.k.a. [JSON-LD](http://json-ld.org/)), and refering to the same
-[standardised vocabulary](https://raw.github.com/standard-analytics/schemas/master/ontology/stats.jsonld)? 
+[standardised vocabulary](http://standardanalytics.io/stats)? 
 
 
 It would simply look like that:
@@ -167,7 +167,7 @@ It would simply look like that:
       <div class="l-box" style="padding-top:0px;">
         <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p</span> <span class="rdfa-tag">vocab</span>="<a href="http://schema.org/">http://schema.org/</a>" 
-   <span class="rdfa-tag">prefix</span>="<a href="http://schema.org/">stats: http://standardanalytics.io/stats/</a>" 
+   <span class="rdfa-tag">prefix</span>="<a href="http://standardanalytics.io/stats">stats: http://standardanalytics.io/stats/</a>" 
    <span class="rdfa-tag">resource</span>="<a href="#obesity">#obesity</a>"
    <span class="rdfa-tag">typeof</span>="<a href="http://schema.org/Comment">Comment</a> <a href="http://standardanalytics.io/stats/Correlation">stats:Correlation</a>"<span class="html-tag">&gt;</span>
 The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, there does seem to be some correlation among OECD countries 
@@ -199,7 +199,7 @@ countries
     </div>
   </div>
 
-with the link taking me to a [5-stars](http://5stardata.info/) description of the analysis:
+The ``isBasedOnUrl`` link taking me to a [5-stars](http://5stardata.info/) description of the analysis:
 
 <pre id="obesity-json"><code>
 {
@@ -256,8 +256,7 @@ with the link taking me to a [5-stars](http://5stardata.info/) description of th
 }
 </code></pre>	
 
-The raw data these results depend on can be retrieved following the [isBasedOnUrl](https://registry.standardanalytics.io/obesity/0.0.0) 
-link: the quantitative argument is now
+The raw data these results depend on can be retrieved by following once again the [isBasedOnUrl](https://registry.standardanalytics.io/obesity/0.0.0). You are starting to see the logic. The quantitative argument is now
 based on fully transparent and reproducible calculations. Every moving piece is
 here for readers (and reviewers) to verify the argument and push the exploration further. More 
 soon on these aspects with a first packaged analysis from the [Reproducibility
@@ -267,15 +266,15 @@ project in psychology](https://osf.io/ezcuj/wiki/home/)!
 
 What we are introducing here is **no science-fiction**. Pre-alpha version of 
 the [registry](http://registry.standardanalytics.io) and its [client](https://github.com/standard-analytics/ldpm) 
-are already available, and most importantly 
+used to host your quantitative arguments are already available, and most importantly 
 the [linked data](http://linkeddata.org/) technology has proven to scale: since the launch 
 of the project in 2011, [over 5 million sites](https://semanticweb.com/schema-org-chat-googles-r-v-guha_b40607) 
 have been marked up with schema.org vocabulary!  For you to start sharing [5-stars](http://5stardata.info/) 
 quantitative arguments **today**, 
-we have published a [JSON-LD packaging tool](http://cran.r-project.org/)
-for [R](http://www.r-project.org/) users. Simply install the [RJSONLD](http://cran.r-project.org/web/packages/RJSONLD/index.html) package, 
+we have published a [JSON-LD packaging tool](http://cran.r-project.org/web/packages/RJSONLD/index.html)
+for [R](http://www.r-project.org/) users. Simply install the [RJSONLD](https://github.com/standard-analytics/RJSONLD) package, 
 available on [CRAN](http://cran.r-project.org/), and add a single line to your
-script for every analytic you wish to export in [JSON-LD]((http://json-ld.org/) 
+script for every analytic you wish to export in [JSON-LD](http://json-ld.org/) 
 format:
 
 
@@ -306,6 +305,6 @@ to provide feedback, propose extensions, and share the word!
 We have shown you here how to tag your quantitative arguments to make them 
 browsable, and how to export shareable [JSON-LD](http://json-ld.org/) versions of your 
 statistical results in [R](http://www.r-project.org/). To learn about 
-automatically marking up and packaging your analysis to publish [five-stars science](http://5stardata.info/)
+automatically marking up and packaging your analysis to publish [five-stars science](http://standardanalytics.io)
 in three simple steps, stay tuned!
 
