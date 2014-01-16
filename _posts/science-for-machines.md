@@ -128,7 +128,7 @@ into the following [JSON-LD](http://json-ld.org/) document (```datapackage.jsonl
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
   "name": "founders",
   "version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
@@ -170,7 +170,7 @@ We can retrieve the document with:
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
   "@id": "founders/0.0.0",
   "@type": "DataCatalog",
   "name": "founders",
@@ -240,7 +240,7 @@ a new datapackage.jsonld which, for now, contains nothing else.
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
@@ -284,7 +284,7 @@ our analysis. So let's add our findings to our previous datapackage.jsonld
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/contexts/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",

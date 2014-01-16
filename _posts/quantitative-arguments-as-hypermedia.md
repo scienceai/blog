@@ -203,7 +203,7 @@ The ``isBasedOnUrl`` link taking me to a [5-stars](http://5stardata.info/) descr
 
 <pre id="obesity-json"><code>
 {
-  "@context": "<a href="https://registry.standardanalytics.io/contexts/datapackage.jsonld">https://r.standardanalytics.io/contexts/datapackage.jsonld</a>",
+  "@context": "<a href="https://registry.standardanalytics.io/datapackage.jsonld">https://r.standardanalytics.io/datapackage.jsonld</a>",
   "name": "obesity-analysis",
   "version": "0.0.0",
   "description": "Correlation analysis based on 'Obesity and the Fastness of Food' blog post of the New York Times",
