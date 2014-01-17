@@ -33,8 +33,8 @@
       "runtime": "R",
       "targetProduct": { "operatingSystem": "Unix" },
       "sampleType": "scripts/corTest.R",
-      "input":  [ "obesity/0.0.0/OECD" ],
-      "output": [ "obesity-analysis/0.0.0/obesityFoodFastness" ]
+      "input":  [ "obesity/0.0.0/dataset/OECD" ],
+      "output": [ "obesity-analysis/0.0.0/dataset/obesityFoodFastness" ]
     }
   ],
   "dataset": [
