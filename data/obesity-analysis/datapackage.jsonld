@@ -31,17 +31,19 @@
       "description": "Exploring links between obesity rates and average time  spend eating.",
       "programmingLanguage": { "name": "R" },
       "runtime": "R",
-      "targetProduct": { "operatingSystem": "Unix" },
-      "sampleType": "scripts/corTest.R",
-      "input":  [ "obesity/0.0.0/dataset/OECD" ],
-      "output": [ "obesity-analysis/0.0.0/dataset/obesityFoodFastness" ]
+      "targetProduct": {
+        "operatingSystem": "Unix",
+        "input":  [ "obesity/0.0.0/dataset/OECD" ],
+        "output": [ "obesity-analysis/0.0.0/dataset/obesityFoodFastness" ]
+      },
+      "sampleType": "scripts/corTest.R"
     }
   ],
   "dataset": [
     {
       "name": "obesityFoodFastness",
       "description": "Is the obesity rate in a country (percentage of national population with a body mass index higher than 30) correlated with the average number of minutes people spend eating each day?",
-      "isBasedOnUrl": [ "obesity-analysis/0.0.0/analytics/corTest#L3" ],
+      "isBasedOnUrl": [ "obesity-analysis/0.0.0/analytics/correlationTest#L3" ],
       "distribution": {
         "contentData": {
           "@type": "Correlation",

@@ -227,10 +227,12 @@ The ``isBasedOnUrl`` link taking me to a [5-stars](http://5stardata.info/) descr
       "description": "Exploring links between obesity rates and average time  spend eating.",
       "programmingLanguage": { "name": "R" },
       "runtime": "R",
-      "targetProduct": { "operatingSystem": "Unix" },
-      "sampleType": "scripts/corTest.R",
-      "input":  [ "<a href="https://registry.standardanalytics.io/obesity/0.0.0/dataset/OECD">obesity-analysis/0.0.0/dataset/OECD</a>" ],
-      "output": [ "<a href="https://registry.standardanalytics.io/obesity-analysis/0.0.0/dataset/obesityFoodFastness">obesity-analysis/0.0.0/dataset/obesityFoodFastness</a>" ]
+      "targetProduct": {
+        "operatingSystem": "Unix",
+        "input":  [ "<a href="https://registry.standardanalytics.io/obesity/0.0.0/dataset/OECD">obesity/0.0.0/dataset/OECD</a>" ],
+        "output": [ "<a href="https://registry.standardanalytics.io/obesity-analysis/0.0.0/dataset/obesityFoodFastness">obesity-analysis/0.0.0/dataset/obesityFoodFastness</a>" ]
+      },
+      "sampleType": "scripts/corTest.R"
     }
   ],
   "dataset": [

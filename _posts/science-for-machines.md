@@ -307,10 +307,12 @@ our analysis. So let's add our findings to our previous datapackage.jsonld
       "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
       "programmingLanguage": { "name": "R" },
       "runtime": "R",
-      "targetProduct": { "operatingSystem": "Unix" },
-      "sampleType": "scripts/propTests.R",
-      "input":  [ "founders/0.0.0/dataset/schools" ],
-      "output": [ "founders-analysis/0.0.0/dataset/stanfordVsHarvard" ]
+      "targetProduct": {
+        "operatingSystem": "Unix",
+        "input":  [ "founders/0.0.0/dataset/schools" ],
+        "output": [ "founders-analysis/0.0.0/dataset/stanfordVsHarvard" ]
+       },
+      "sampleType": "scripts/propTests.R"
     }
   ],
   "dataset": [
