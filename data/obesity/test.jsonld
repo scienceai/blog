@@ -1,0 +1,50 @@
+{
+  "@context" : {
+    "@vocab" : "http://standardanalytics.io/stats/"
+  },
+  "@type" : [
+    "Correlation",
+    "Statistic"
+  ],
+  "description" : "Correlation between obesity$ObesityRate and obesity$MinutesSpentEating",
+  "valueReference" : [
+    {
+      "@type" : "Variable",
+      "name" : "obesity$ObesityRate"
+    },
+    {
+      "@type" : "Variable",
+      "name" : "obesity$MinutesSpentEating"
+    }
+  ],
+  "value" : -0.45035,
+  "confidenceInterval" : [
+    {
+      "@type" : [
+        "Statistic",
+        "Quantile"
+      ],
+      "percentile" : 2.5,
+      "value" : -0.75787
+    },
+    {
+      "@type" : [
+        "Statistic",
+        "Quantile"
+      ],
+      "percentile" : 97.5,
+      "value" : 0.020918
+    }
+  ],
+  "statisticalTest" : {
+    "@type" : "CorTest",
+    "method" : {
+      "description" : "Pearson's product-moment correlation",
+      "sameAs" : "http://stat.ethz.ch/R-manual/R-patched/library/stats/html/cor.test.html"
+    },
+    "alternative" : "two.sided",
+    "testStatistic" : -2.0176,
+    "df" : 16,
+    "pValue" : 0.06073
+  }
+}
