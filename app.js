@@ -1,10 +1,28 @@
 var express = require('express')
+  , fs = require('fs')
   , ejs = require('ejs')
   , http = require('http')
+  , https = require('https')
   , path = require('path')
   , Poet = require('poet');
 
-var app = express();
+var $HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+var host = process.env['NODE_HOST']
+  , port = process.env['NODE_PORT']
+  , portHttps = process.env['NODE_PORT_HTTPS'];
+
+var credentials = {
+  key: fs.readFileSync(path.join($HOME, 'certificate', 'standardanalytics.key')),
+  cert: fs.readFileSync(path.join($HOME, 'certificate', 'certificate-47444.crt')),
+  ca: fs.readFileSync(path.join($HOME, 'certificate', 'GandiStandardSSLCA.pem'))
+};
+
+
+var app = express()
+  , httpServer = http.createServer(app)
+  , httpsServer = https.createServer(credentials, app);
+
 
 var poet = new Poet(app, {
   posts: './_posts/',
@@ -37,7 +55,9 @@ app.get('/rss', function (req, res) {
   res.render('rss', { posts: posts });
 });
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+
+httpServer.listen(port);
+httpsServer.listen(portHttps);
+console.log('Server running at http://127.0.0.1:' + port + ' (' + host + ')');
+console.log('Server running at https://127.0.0.1:' + portHttps + ' (' + host + ')');
 
