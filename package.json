@@ -4,7 +4,7 @@
   "description": "blog for Standard Analytics IO",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_HOST=localhost NODE_PORT=3040 NODE_PORT_HTTPS=3041 node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/standard-analytics/blog",
   "dependencies": {
     "ejs": "~0.8.5",
-    "poet": "~1.0.0-rc3",
+    "poet": "~1.0.0-rc4",
     "express": "~3.4.7"
   }
 }
