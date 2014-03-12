@@ -36,7 +36,7 @@ inspired from a [New York Times blog post](http://economix.blogs.nytimes.com/200
       <div class="l-box">
         <pre id="obesity" style="font-size: 90%;">
 <span class="html-tag">&lt;p&gt;</span>
-The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, the stats from OECD countries reveal there is a -0.45 correlation between these two quantities (p=0.06).
+The French spend the most time per day eating, but have one of the lowest obesity rates among developed nations. Coincidence? Maybe not, the statistics from OECD countries reveal there is a -0.45 correlation between these two quantities (p=0.06).
 <span class="html-tag">&lt;/p&gt;</span>
         </pre>
       </div>
@@ -45,7 +45,7 @@ The French spend the most time per day eating, but have one of the lowest obesit
 	<blockquote>
 <p>
 The French spend the most time per day eating, but have one of the lowest
-obesity rates among developed nations. Coincidence? Maybe not, the stats
+obesity rates among developed nations. Coincidence? Maybe not, the statistics
 from OECD countries reveal there is a -0.45 correlation between these
 two quantities (p=0.06).
 </p>
@@ -106,7 +106,7 @@ The French spend the most <span class="html-tag">&lt;span</span> <span class="rd
 <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/name">schema:name</a>"<span class="html-tag">&gt;</span>time per day eating<span class="html-tag">&lt;/span&gt;</span>,
 but have one of the lowest
 <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/name">schema:name</a>"<span class="html-tag">&gt;</span>obesity rates<span class="html-tag">&lt;/span&gt;</span> <span class="html-tag">&lt;/span&gt;</span>
-among developed nations. Coincidence? Maybe not, the stats
+among developed nations. Coincidence? Maybe not, the statistics
 from OECD countries reveal there is a
 <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/estimate">stats:estimate</a>"<span class="html-tag">&gt;</span>-0.45<span class="html-tag">&lt;/span&gt;</span>
 correlation between these two quantities
@@ -125,7 +125,7 @@ correlation between these two quantities
    resource="#obesity"
    typeof="Comment stats:Correlation stats:Statistic">
 The French spend the most time per day eating, but have one of the lowest
-obesity rates among developed nations. Coincidence? Maybe not, the stats
+obesity rates among developed nations. Coincidence? Maybe not, the statistics
 from OECD countries reveal there is a -0.45 correlation between these
 two quantities (p=0.06).
 </p>
@@ -181,14 +181,14 @@ It would simply look like that:
 
 The French spend the most <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/referenceValue">schema:referenceValue</a>"<span class="html-tag">&gt;</span>  
 <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/name">schema:name</a>"<span class="html-tag">&gt;</span>time per day eating<span class="html-tag">&lt;/span&gt;</span>, but have one of the lowest
-<span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/name">schema:name</a>"<span class="html-tag">&gt;</span>obesity rates<span class="html-tag">&lt;/span&gt;</span> <span class="html-tag">&lt;/span&gt;</span> among developed nations. Coincidence? Maybe not, the stats
+<span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://schema.org/name">schema:name</a>"<span class="html-tag">&gt;</span>obesity rates<span class="html-tag">&lt;/span&gt;</span> <span class="html-tag">&lt;/span&gt;</span> among developed nations. Coincidence? Maybe not, the statistics
 from OECD countries reveal there is a
 <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/estimate">stats:estimate</a>"<span class="html-tag">&gt;</span>-0.45<span class="html-tag">&lt;/span&gt;</span> correlation between these
 two quantities
 (<span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/statisticalTest">stats:statisticalTest</a>"<span class="html-tag">&gt;</span>
 p=<span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/pValue">stats:pValue</a>"<span class="html-tag">&gt;</span>0.06<span class="html-tag">&lt;/span&gt;</span>
 <span class="html-tag">&lt;/span&gt;</span>).
-See <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/pValue">schema:isBasedOnUrl</a>" <span class="rdfa-tag">href</span>="<a href="http://registry.standardanalytics.io/obesity">http://registry.standardanalytics.io/obesity</a>"<span class="html-tag">&gt;</span>here<span class="html-tag">&lt;/span&gt;</span> for more info.
+See <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span>="<a href="http://standardanalytics.io/stats/pValue">schema:isBasedOnUrl</a>" <span class="rdfa-tag">href</span>="<a href="http://registry.standardanalytics.io/obesity">http://registry.standardanalytics.io/obesity</a>"<span class="html-tag">&gt;</span>here<span class="html-tag">&lt;/span&gt;</span> for more details.
 <span class="html-tag">&lt;/p&gt;</span>
         </pre>
       </div>
@@ -200,10 +200,10 @@ See <span class="html-tag">&lt;span</span> <span class="rdfa-tag">property</span
    resource="#obesity"
    typeof="Comment stats:Correlation">
 The French spend the most time per day eating, but have one of the lowest
-obesity rates among developed nations. Coincidence? Maybe not, the stats
+obesity rates among developed nations. Coincidence? Maybe not, the statistics
 from OECD countries reveal there is a -0.45 correlation between these
 two quantities (<a property="sh:isBasedOnUrl" href="http://registry.standardanalytics.io/obesity-analysis/0.0.0">p=0.06</a>).
-See <a href = "http://registry.standardanalytics.io/obesity">here</a> for more info.
+See <a href = "http://registry.standardanalytics.io/obesity">here</a> for more details.
 </p>
 	</blockquote>
     </div>
@@ -231,9 +231,10 @@ format:
 
 
 <pre id="obesity-R"><code class="r">
-   obesity <- read.csv('obesity.csv')
-   result = cor.test(obesity$ObesityRate,obesity$MinutesSpentEating)
-   <span class="stats">RJSONLD.export</span>(result,'ObesityFoodFastness.jsonld')
+library(RJSONLD)
+obesity <- read.csv('obesity.csv')
+result = cor.test(obesity$ObesityRate,obesity$MinutesSpentEating)
+<span class="stats">RJSONLD.export</span>(result,'ObesityFoodFastness.jsonld')
 </code></pre>
 
 

@@ -43,7 +43,7 @@ standardized, linked format is not common practice.
 
     <div class="pure-u-1-2">
       <h2>Science</h2>
-      
+
       <h3>My cancer research article</h3>
 
       <h4><a href="http://en.wikipedia.org/wiki/Scientific_citation">References</a></h4>
@@ -52,7 +52,7 @@ standardized, linked format is not common practice.
         <li>Author, Year. <strong>Lung cancer incidence</strong>. Journal Name: Page.</li>
         <li>Author, Year. <strong>Statistical methods</strong>. Journal Name: Page.</li>
       </ul>
-      
+
     </div>
   </div>
 
@@ -124,17 +124,16 @@ wraps the [csv](http://en.wikipedia.org/wiki/Comma-separated_values) file
 ...
 ```
 
-into the following [JSON-LD](http://json-ld.org/) document (```datapackage.jsonld```).
+into the following [JSON-LD](http://json-ld.org/) document (```package.jsonld```).
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
   "name": "founders",
-  "version": "0.0.0",
+	"version": "0.0.0",
   "description": "Data used in Mode Analytics Stanford founders blog post",
   "citation": [ { "url": "http://blog.modeanalytics.com/are-stanford-grads-good-investments/" } ],
+  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data"],
   "license": "CC0-1.0",
-  "keywords": [ "schools", "graduates", "startup", "unicorn", "founders", "data" ],
   "author": {
     "name": "Sebastien Ballesteros",
     "email": "sebastien@standardanalytics.io"
@@ -143,8 +142,14 @@ into the following [JSON-LD](http://json-ld.org/) document (```datapackage.jsonl
     {
       "name": "schools",
       "distribution": {
-        "contentPath": "data/schools.csv"
-      }
+        "contentPath": "schools.csv",
+        "encodingFormat": "text/csv"
+      },
+      "about": [
+        { "name": "Schools", "valueType": "xsd:string" },
+        { "name": "Founders", "valueType": "xsd:integer" },
+        { "name": "Unicorns", "valueType": "xsd:string" }
+      ]
     }
   ]
 }
@@ -170,7 +175,7 @@ We can retrieve the document with:
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/package.jsonld",
   "@id": "founders/0.0.0",
   "@type": "DataCatalog",
   "name": "founders",
@@ -182,7 +187,7 @@ We can retrieve the document with:
       "@type": "Dataset",
       "name": "schools",
       "distribution": {
-        "@type": "DataDownload"
+        "@type": "DataDownload",
         "contentPath": "data/schools.csv",
         "contentUrl": "founders/0.0.0/dataset/schools/schools.csv",
         "contentSize": 193,
@@ -209,7 +214,7 @@ retrieved.  All the URLs are relative to a base defined in the
 The context also allows machine to know which of the properties are
 indeed URLs. For instance, a human can easily understand that
 
-<pre><code class="json">contentUrl: "founders/0.0.0/dataset/schools/schools.csv"</code></pre>
+<pre><code class="json">"contentUrl": "founders/0.0.0/dataset/schools/schools.csv"</code></pre>
 
 indicates a relative URL pointing to the content of the dataset but for
 a machine ```contentUrl``` only contains a string. If we look closer at our
@@ -235,12 +240,12 @@ more
 [Unicorns](http://techcrunch.com/2013/11/02/welcome-to-the-unicorn-club/)
 (>1B$ valuation startups) than graduates of other universities, I can
 simply list this data package as dependencies (```isBasedOnUrl```) of
-a new datapackage.jsonld which, for now, contains nothing else.
+a new package.jsonld which, for now, contains nothing else.
 
 
 ```
 {
-  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
+  "@context": "https://registry.standardanalytics.io/package.jsonld",
   "name": "founders-analysis",
   "version": "0.0.0",
   "description": "Unicorns founders and schools origin",
@@ -260,10 +265,11 @@ Having the data I need, I can fire up [R](http://www.r-project.org/)
 and ask, _have Stanford grads founded significantly more unicorns than
 Harvard ones?_
 
-<pre><code class="r">schools <- read.csv("../datapackages/founders/data/schools.csv")
-stanford <- schools$unicorns[schools$school == "Stanford"]
-harvard <- schools$unicorns[schools$school == "Harvard"]
-prop.test(stanford, stanford + harvard, alternative = "greater")</code></pre>
+<pre><code class="r">schools <- read.csv("ld_packages/founders/schools.csv")
+stanford <- schools$Unicorns[schools$Schools == "Stanford"]
+harvard <- schools$Unicorns[schools$Schools == "Harvard"]
+prop.test(stanford, stanford + harvard, alternative = "greater")
+</code></pre>
 
 
 But let's not stop here. Statistical results are data after all and
@@ -273,79 +279,20 @@ keep using our semantic technologies (namely,
 [JSON-LD](http://json-ld.org) and
 [RDF](http://www.w3.org/TR/rdf-schema/)) to make it completely clear
 (to both humans and machines) which
-[statistical analytics](https://raw.github.com/standard-analytics/terms)
+[statistical analytics](http://standardanalytics.io/stats)
 were used.
 
 While we are at it, we can also indicate as metadata how the results
 were obtained so that anyone (human or machine) can _fully reproduce_
-our analysis. So let's add our findings to our previous datapackage.jsonld
+our analysis. So let's add our findings to our previous package.jsonld
 (that we originally used to get the dependencies).
 
-
-```
-{
-  "@context": "https://registry.standardanalytics.io/datapackage.jsonld",
-  "name": "founders-analysis",
-  "version": "0.0.0",
-  "description": "Unicorns founders and schools origin",
-  "license": "CC0-1.0",
-  "repository": [
-    {
-      "codeRepository": "https://github.com/standard-analytics/blog.git",
-      "path": "data/founders-analysis"
-    }
-  ],
-  "keywords": [ "schools", "grads", "startup", "unicorns", "founders", "analysis" ],
-  "author": {
-    "name": "Sebastien Ballesteros",
-    "email": "sebastien@standardanalytics.io"
-  },
-  "isBasedOnUrl": [ "founders/0.0.0" ],
-  "analytics": [
-    {
-      "name": "propTest",
-      "description": "Do Stanford Grads found significantly more Unicorns (>1B$ valuation startups) than other graduates?",
-      "programmingLanguage": { "name": "R" },
-      "runtime": "R",
-      "targetProduct": {
-        "operatingSystem": "Unix",
-        "input":  [ "founders/0.0.0/dataset/schools" ],
-        "output": [ "founders-analysis/0.0.0/dataset/stanfordVsHarvard" ]
-       },
-      "sampleType": "scripts/propTests.R"
-    }
-  ],
-  "dataset": [
-    {
-      "name": "stanfordVsHarvard",
-      "description": "Do Stanford grads found significantly more unicorns than Harvard ones?",
-      "isBasedOnUrl": [ "founders-analysis/0.0.0/analytics/propTest#L4" ],
-      "distribution": {
-        "contentData": {
-          "@context": {
-            "@vocab": "http://standardanalytics.io/stats/"
-          },
-          "@type": "Proportion",
-          "estimate": 0.61905,
-          "statTest": {
-            "@type": "ChisqTest",
-            "testStatistic": 0.7619,
-            "df": 1,
-            "pValue": 0.19137
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
-We can now publish this new ```datapackage.jsonld``` on the
+We can now publish this new ```package.jsonld``` on the
 [Standard Analytics registry](https://registry.standardanalytics.io).
 
 <pre><code class="bash">$ ldpm publish</code></pre>
 
-With such a file, anyone can _verify_ the results, plus there is more:
+With [such a file](https://registry.standardanalytics.io/founders-analysis/0.0.0), anyone can _verify_ the results, plus there is more:
 anyone can now **quote** these findings! Let's illustrate this last
 point.
 
@@ -374,7 +321,7 @@ analytic (here a [p-value](http://en.wikipedia.org/wiki/P-value)) all
 the way back to the
 [original data](https://registry.standardanalytics.io/founders/0.0.0/dataset/schools/schools.csv).
 
-- As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/dataset/stanfordVsHarvard)
+- As we have seen, the p-value is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0/dataset/stanfordVsHarvard/stanfordVsHarvard.jsonld](https://registry.standardanalytics.io/unicorns-stanford/0.0.0/dataset/stanfordVsHarvard/stanfordVsHarvard.jsonld)
 
 - The latest version of the full data package is here: [https://registry.standardanalytics.io/founders-analysis/0.0.0](https://registry.standardanalytics.io/unicorns-stanford/0.0.0)
 
@@ -390,8 +337,8 @@ being said we are working to add some
 reading the API doc for the unsafe transitions (PUT, POST, DELETE)
 becomes a thing of the past.
 
-You may be thinking that generating these ```datapackage.jsonld``` is
+You may be thinking that generating these ```package.jsonld``` is
 too much hassle, and that scientists and data-enthusiasts have better
-things to do than write such ```datapackage.jsonld``` files. Having
+things to do than write such ```package.jsonld``` files. Having
 been there ourselves, we could not agree more: this has to be a
 **fully effortless** process. So stay tuned for our launch!
