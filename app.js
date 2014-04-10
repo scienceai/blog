@@ -41,7 +41,7 @@ poet.watch(function () {
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon(path.join(__dirname, 'public/img/common/favicon.ico'))); 
+app.use(express.favicon(path.join(__dirname, 'public/img/common/SA2014-3-5.png'))); 
 app.use(express.static(path.join(__dirname, 'public')));
 
 
