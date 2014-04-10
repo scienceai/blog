@@ -8,9 +8,9 @@ var express = require('express')
 
 var $HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 
-var host = process.env['NODE_HOST']
-  , port = process.env['NODE_PORT']
-  , portHttps = process.env['NODE_PORT_HTTPS'];
+var host = process.env['NODE_HOST'] || 'localhost'
+  , port = process.env['NODE_PORT'] || 3000
+  , portHttps = process.env['NODE_PORT_HTTPS'] || 3001;
 
 var credentials = {
   key: fs.readFileSync(path.join($HOME, 'certificate', 'standardanalytics.key')),
@@ -33,15 +33,16 @@ var poet = new Poet(app, {
 poet.watch(function () {
   // watcher reloaded
 })
-  .init().then(function () {
-    // ready to go!
-  });
+
+.init().then(function () {
+  // ready to go!
+});
 
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon(path.join(__dirname, 'public/img/common/SA2014-3-5.png'))); 
+app.use(express.favicon(path.join(__dirname, 'public/img/common/SA2014-3-5.png')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -55,9 +56,7 @@ app.get('/rss', function (req, res) {
   res.render('rss', { posts: posts });
 });
 
-
 httpServer.listen(port);
 httpsServer.listen(portHttps);
 console.log('Server running at http://127.0.0.1:' + port + ' (' + host + ')');
 console.log('Server running at https://127.0.0.1:' + portHttps + ' (' + host + ')');
-
