@@ -2,16 +2,15 @@
 	"title" : "The revolution won't be peer reviewed",
 	"tags": [ "blog" ],
 	"category" : "announcement",
-	"date" : "01-12-2014",
+	"date" : "05-16-2014",
         "author": "Sebastien"
 }}}
-
 
 While the average blogger publishes [schema.org](http://schema.org)
 compliant markup, while facebook and google are building [knowledge
 graphs](http://www.google.com/insidesearch/features/search/knowledge.html),
-we scientists are still arguing about publishing narratives and peer
-reviewing them.
+we scientists are still mostly arguing about publishing narratives and
+peer reviewing them.
 
 Let's be clear, peer review alone won't send us to space (fast
 enough). What we need is Star Trek, and we need it now.  Remember when
